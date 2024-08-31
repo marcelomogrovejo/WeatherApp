@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */; };
+		BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54612C8373540098AADD /* WeatherEnum.swift */; };
+		BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54632C8376790098AADD /* Color+Palette.swift */; };
 		BDCB3CCF2C83063D005C8E92 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CCE2C83063D005C8E92 /* WeatherAppApp.swift */; };
 		BDCB3CD12C83063D005C8E92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CD02C83063D005C8E92 /* ContentView.swift */; };
 		BDCB3CD32C830640005C8E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB3CD22C830640005C8E92 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConfig.swift; sourceTree = "<group>"; };
+		BD7C54612C8373540098AADD /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
+		BD7C54632C8376790098AADD /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
 		BDCB3CCB2C83063D005C8E92 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCB3CCE2C83063D005C8E92 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		BDCB3CD02C83063D005C8E92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				BDCB3CE92C83065C005C8E92 /* WeatherAppWidget.swift */,
 				BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */,
 				BDCB3CED2C83065E005C8E92 /* Info.plist */,
+				BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */,
+				BD7C54612C8373540098AADD /* WeatherEnum.swift */,
+				BD7C54632C8376790098AADD /* Color+Palette.swift */,
 			);
 			path = WeatherAppWidget;
 			sourceTree = "<group>";
@@ -247,7 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDCB3CEA2C83065C005C8E92 /* WeatherAppWidget.swift in Sources */,
+				BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */,
 				BDCB3CE82C83065C005C8E92 /* WeatherAppWidgetBundle.swift in Sources */,
+				BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */,
+				BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
