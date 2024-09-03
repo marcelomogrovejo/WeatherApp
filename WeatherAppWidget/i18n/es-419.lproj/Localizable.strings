@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Marcelo Mogrovejo on 03/09/2024.
+  
+*/
+/* Weather Conditions */
+"weather-confition-sunny" = "Soleado";
+"weather-confition-cloudy" = "Nublado";
+"weather-confition-rainy" = "Lluvioso";
+"weather-confition-windy" = "Ventoso";
+"weather-confition-snowy" = "Nevando";
+"weather-confition-foggy" = "Niebla";
+"weather-confition-stormy" = "Tormentoso";
+"weather-confition-hot" = "Caluroso";
+"weather-confition-cold" = "Frio";
+"weather-confition-humid" = "Húmedo";

@@ -8,29 +8,32 @@
 import WidgetKit
 import SwiftUI
 
-
-
-/// Source: https://swiftsenpai.com/development/getting-started-widgetkit/
-
-
+/// Sources:
+/// * https://swiftsenpai.com/development/getting-started-widgetkit/
+/// * https://www.youtube.com/watch?v=jucm6e9M6LA
 
 // 1. Entry
 struct WeatherEntry: TimelineEntry {
     var date: Date
     var currentWeather: Weather
-}
 
-struct Weather {
-    let condition: WeatherCondition
-    let location: String
-    let degrees: Int
-    let degreesType: DegreesType?
-
-    init(condition: WeatherCondition, location: String, degrees: Int, degreesType: DegreesType? = .celsius) {
-        self.condition = condition
-        self.location = location
-        self.degrees = degrees
-        self.degreesType = degreesType
+    /// Generates a random Weather entry
+    ///
+    /// - Parameter date: a date
+    /// - Returns: a Weather entry
+    ///
+    static func randomEntry(date: Date) -> WeatherEntry {
+        let locations = ["Perth", "Adelaide", "Sydney", "Melbourne", "Hobart", "Cairns", "Darwin", "Camberra", "New Castle", "Mendoza"]
+        let randomLocation = locations[Int.random(in: 0..<locations.count)]
+        let randomDegrees = Int.random(in: -30..<44)
+        guard let randomWeatherCondition = WeatherCondition.randomCondition() else {
+            let dummyWeather = Weather(condition: .cloudy, location: randomLocation, degrees: randomDegrees)
+            return WeatherEntry(date: date, currentWeather: dummyWeather)
+        }
+        let randomWeather = Weather(condition: randomWeatherCondition,
+                                    location: randomLocation,
+                                    degrees: randomDegrees)
+        return WeatherEntry(date: date, currentWeather: randomWeather)
     }
 }
 
@@ -50,7 +53,7 @@ struct WeatherWidgetView: View {
             HStack(spacing: 4) {
                 Text(config.emojiText)
                     .font(.title)
-                Text("\(entry.currentWeather.condition.rawValue)")
+                Text("\(entry.currentWeather.condition.description)")
                     .font(.title3)
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.6)
@@ -59,7 +62,7 @@ struct WeatherWidgetView: View {
 
             HStack(alignment: .lastTextBaseline, spacing: 2) {
                 Text("\(entry.currentWeather.degrees)")
-                    .font(.system(size: 70, weight: .heavy))
+                    .font(.system(size: 50, weight: .heavy))
                     .foregroundColor(config.conditionTextColor)
                 Text("\(entry.currentWeather.degreesType?.rawValue ?? "°C")")
                     .font(.system(size: 20, weight: .bold))
@@ -97,9 +100,17 @@ struct WeatherTimelineProvider: TimelineProvider {
 
     // provides an array of timeline entries for the current time and, optionally, any future times to update a widget
     func getTimeline(in context: Context, completion: @escaping (Timeline<WeatherEntry>) -> Void) {
-        let weather = Weather(condition: .cloudy, location: "Hong Kong", degrees: 15)
-        let entry = WeatherEntry(date: .now, currentWeather: weather)
-        let timeline = Timeline(entries: [entry], policy: .never)
+        var entries: [WeatherEntry] = []
+        let currentDate: Date = .now
+        for hourOffset in 0..<5 {
+            // TODO: Warning !
+            // Change to update by hours instead of minutes
+            let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+            let entry = WeatherEntry.randomEntry(date: entryDate)
+            entries.append(entry)
+        }
+
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 

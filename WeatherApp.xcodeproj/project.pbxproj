@@ -21,6 +21,8 @@
 		BDCB3CEC2C83065E005C8E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */; };
 		BDCB3CF02C83065E005C8E92 /* WeatherAppWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BDCB3CE02C83065C005C8E92 /* WeatherAppWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BDD96BBF2C872B470098F412 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BDD96BBE2C872B470098F412 /* LICENSE */; };
+		BDD96BC32C8743EB0098F412 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BC22C8743EB0098F412 /* Weather.swift */; };
+		BDD96BC72C874DC30098F412 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDD96BC52C874DC30098F412 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,10 @@
 		BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDCB3CED2C83065E005C8E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD96BBE2C872B470098F412 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		BDD96BC22C8743EB0098F412 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		BDD96BC62C874DC30098F412 /* en-AU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-AU"; path = "en-AU.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BDD96BC92C874E020098F412 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BDD96BCB2C874F130098F412 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,8 @@
 		BDCB3CE62C83065C005C8E92 /* WeatherAppWidget */ = {
 			isa = PBXGroup;
 			children = (
+				BDD96BC82C874DDB0098F412 /* i18n */,
+				BDD96BC42C8744070098F412 /* Model */,
 				BDD96BC12C872D060098F412 /* Enum */,
 				BDD96BC02C872CF60098F412 /* Extension */,
 				BDCB3CE72C83065C005C8E92 /* WeatherAppWidgetBundle.swift */,
@@ -162,6 +170,22 @@
 				BD7C54612C8373540098AADD /* WeatherEnum.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		BDD96BC42C8744070098F412 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BDD96BC22C8743EB0098F412 /* Weather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDD96BC82C874DDB0098F412 /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				BDD96BC52C874DC30098F412 /* Localizable.strings */,
+			);
+			path = i18n;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,11 +247,14 @@
 			};
 			buildConfigurationList = BDCB3CC62C83063D005C8E92 /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "en-AU";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"en-AU",
+				"es-419",
+				ja,
 			);
 			mainGroup = BDCB3CC22C83063D005C8E92;
 			productRefGroup = BDCB3CCC2C83063D005C8E92 /* Products */;
@@ -256,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDCB3CEC2C83065E005C8E92 /* Assets.xcassets in Resources */,
+				BDD96BC72C874DC30098F412 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +307,7 @@
 				BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */,
 				BDCB3CE82C83065C005C8E92 /* WeatherAppWidgetBundle.swift in Sources */,
 				BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */,
+				BDD96BC32C8743EB0098F412 /* Weather.swift in Sources */,
 				BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +321,19 @@
 			targetProxy = BDCB3CEE2C83065E005C8E92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BDD96BC52C874DC30098F412 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDD96BC62C874DC30098F412 /* en-AU */,
+				BDD96BC92C874E020098F412 /* ja */,
+				BDD96BCB2C874F130098F412 /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BDCB3CD72C830640005C8E92 /* Debug */ = {

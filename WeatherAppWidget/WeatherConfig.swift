@@ -13,6 +13,11 @@ struct WeatherConfig {
     let locationTextColor: Color
     let conditionTextColor: Color
 
+    /// Fetches a weather configuration depending on the weather condition
+    ///
+    /// - Parameter weatherCondition: current weather condition.
+    /// - Returns: configuration.
+    ///
     static func determineConfig(from weatherCondition: WeatherCondition) -> WeatherConfig {
         switch weatherCondition {
         case .sunny:
