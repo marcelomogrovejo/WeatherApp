@@ -23,6 +23,7 @@
 		BDD96BBF2C872B470098F412 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BDD96BBE2C872B470098F412 /* LICENSE */; };
 		BDD96BC32C8743EB0098F412 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BC22C8743EB0098F412 /* Weather.swift */; };
 		BDD96BC72C874DC30098F412 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDD96BC52C874DC30098F412 /* Localizable.strings */; };
+		BDD96BCE2C8753840098F412 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BCD2C8753840098F412 /* WeatherWidgetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		BDD96BC62C874DC30098F412 /* en-AU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-AU"; path = "en-AU.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BDD96BC92C874E020098F412 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BDD96BCB2C874F130098F412 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BDD96BCD2C8753840098F412 /* WeatherWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		BDCB3CE62C83065C005C8E92 /* WeatherAppWidget */ = {
 			isa = PBXGroup;
 			children = (
+				BDD96BCC2C8753730098F412 /* View */,
 				BDD96BC82C874DDB0098F412 /* i18n */,
 				BDD96BC42C8744070098F412 /* Model */,
 				BDD96BC12C872D060098F412 /* Enum */,
@@ -186,6 +189,14 @@
 				BDD96BC52C874DC30098F412 /* Localizable.strings */,
 			);
 			path = i18n;
+			sourceTree = "<group>";
+		};
+		BDD96BCC2C8753730098F412 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BDD96BCD2C8753840098F412 /* WeatherWidgetView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 			files = (
 				BDCB3CEA2C83065C005C8E92 /* WeatherAppWidget.swift in Sources */,
 				BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */,
+				BDD96BCE2C8753840098F412 /* WeatherWidgetView.swift in Sources */,
 				BDCB3CE82C83065C005C8E92 /* WeatherAppWidgetBundle.swift in Sources */,
 				BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */,
 				BDD96BC32C8743EB0098F412 /* Weather.swift in Sources */,

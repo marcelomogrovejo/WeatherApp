@@ -19,6 +19,8 @@ struct WeatherEntry: TimelineEntry {
 
     /// Generates a random Weather entry
     ///
+    /// At this point that is needed in order to test. When the Weather base app is done, the api call will get the real date.
+    /// 
     /// - Parameter date: a date
     /// - Returns: a Weather entry
     ///
@@ -34,50 +36,6 @@ struct WeatherEntry: TimelineEntry {
                                     location: randomLocation,
                                     degrees: randomDegrees)
         return WeatherEntry(date: date, currentWeather: randomWeather)
-    }
-}
-
-// 2. View
-struct WeatherWidgetView: View {
-
-    var entry: WeatherEntry
-    var config: WeatherConfig
-
-    init(entry: WeatherEntry) {
-        self.entry = entry
-        self.config = WeatherConfig.determineConfig(from: entry.currentWeather.condition)
-    }
-
-    var body: some View {
-        VStack(alignment: .center) {
-            HStack(spacing: 4) {
-                Text(config.emojiText)
-                    .font(.title)
-                Text("\(entry.currentWeather.condition.description)")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.6)
-                    .foregroundColor(config.conditionTextColor)
-            }
-
-            HStack(alignment: .lastTextBaseline, spacing: 2) {
-                Text("\(entry.currentWeather.degrees)")
-                    .font(.system(size: 50, weight: .heavy))
-                    .foregroundColor(config.conditionTextColor)
-                Text("\(entry.currentWeather.degreesType?.rawValue ?? "°C")")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(config.conditionTextColor)
-            }
-
-            Text(entry.currentWeather.location)
-                .font(.footnote)
-                .fontWeight(.bold)
-                .foregroundColor(config.conditionTextColor)
-        }
-        /// Source: https://swiftsenpai.com/development/widget-container-background/
-        .containerBackground(for: .widget) {
-            config.backgroundColor
-        }
     }
 }
 
@@ -138,6 +96,8 @@ struct WeatherAppWidget: Widget {
 #Preview(as: .systemSmall) {
     WeatherAppWidget()
 } timeline: {
-    let currentWeather = Weather(condition: .windy, location: "Hong Kong", degrees: 7)
-    WeatherEntry(date: .now, currentWeather: currentWeather)
+    WeatherEntry(date: .now,
+                 currentWeather: Weather(condition: .windy,
+                                         location: "Hong Kong", 
+                                         degrees: 7))
 }

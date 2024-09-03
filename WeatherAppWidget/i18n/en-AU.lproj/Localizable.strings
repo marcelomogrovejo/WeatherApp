@@ -4,6 +4,7 @@
 
   Created by Marcelo Mogrovejo on 03/09/2024.
   
+  source: https://medium.com/@itsuki.enjoy/localization-in-ios-swift-6b3a7735bd1a
 */
 /* Weather Conditions */
 "weather-confition-sunny" = "Sunny";
