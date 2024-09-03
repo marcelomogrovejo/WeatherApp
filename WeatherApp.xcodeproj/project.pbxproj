@@ -20,6 +20,7 @@
 		BDCB3CEA2C83065C005C8E92 /* WeatherAppWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CE92C83065C005C8E92 /* WeatherAppWidget.swift */; };
 		BDCB3CEC2C83065E005C8E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */; };
 		BDCB3CF02C83065E005C8E92 /* WeatherAppWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BDCB3CE02C83065C005C8E92 /* WeatherAppWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BDD96BBF2C872B470098F412 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BDD96BBE2C872B470098F412 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		BDCB3CE92C83065C005C8E92 /* WeatherAppWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppWidget.swift; sourceTree = "<group>"; };
 		BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDCB3CED2C83065E005C8E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDD96BBE2C872B470098F412 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		BDCB3CCD2C83063D005C8E92 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				BDD96BBE2C872B470098F412 /* LICENSE */,
 				BDCB3CCE2C83063D005C8E92 /* WeatherAppApp.swift */,
 				BDCB3CD02C83063D005C8E92 /* ContentView.swift */,
 				BDCB3CD22C830640005C8E92 /* Assets.xcassets */,
@@ -134,15 +137,31 @@
 		BDCB3CE62C83065C005C8E92 /* WeatherAppWidget */ = {
 			isa = PBXGroup;
 			children = (
+				BDD96BC12C872D060098F412 /* Enum */,
+				BDD96BC02C872CF60098F412 /* Extension */,
 				BDCB3CE72C83065C005C8E92 /* WeatherAppWidgetBundle.swift */,
 				BDCB3CE92C83065C005C8E92 /* WeatherAppWidget.swift */,
 				BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */,
 				BDCB3CED2C83065E005C8E92 /* Info.plist */,
 				BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */,
-				BD7C54612C8373540098AADD /* WeatherEnum.swift */,
-				BD7C54632C8376790098AADD /* Color+Palette.swift */,
 			);
 			path = WeatherAppWidget;
+			sourceTree = "<group>";
+		};
+		BDD96BC02C872CF60098F412 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BD7C54632C8376790098AADD /* Color+Palette.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BDD96BC12C872D060098F412 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				BD7C54612C8373540098AADD /* WeatherEnum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDD96BBF2C872B470098F412 /* LICENSE in Resources */,
 				BDCB3CD62C830640005C8E92 /* Preview Assets.xcassets in Resources */,
 				BDCB3CD32C830640005C8E92 /* Assets.xcassets in Resources */,
 			);
