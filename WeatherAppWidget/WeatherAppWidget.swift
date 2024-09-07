@@ -60,10 +60,10 @@ struct WeatherTimelineProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<WeatherEntry>) -> Void) {
         var entries: [WeatherEntry] = []
         let currentDate: Date = .now
-        for hourOffset in 0..<5 {
+        for hourOffset in 0..<15 {
             // TODO: Warning !
             // Change to update by hours instead of minutes
-            let entryDate = Calendar.current.date(byAdding: .minute, value: hourOffset, to: currentDate)!
+            let entryDate = Calendar.current.date(byAdding: .second, value: hourOffset, to: currentDate)!
             let entry = WeatherEntry.randomEntry(date: entryDate)
             entries.append(entry)
         }

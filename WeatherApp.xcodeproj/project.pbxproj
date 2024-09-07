@@ -72,6 +72,8 @@
 		BDD96BC92C874E020098F412 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BDD96BCB2C874F130098F412 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BDD96BCD2C8753840098F412 /* WeatherWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidgetView.swift; sourceTree = "<group>"; };
+		BDD96BCF2C8755F90098F412 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BDD96BD02C8756090098F412 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				BDCB3CD02C83063D005C8E92 /* ContentView.swift */,
 				BDCB3CD22C830640005C8E92 /* Assets.xcassets */,
 				BDCB3CD42C830640005C8E92 /* Preview Content */,
+				BDD96BD02C8756090098F412 /* README.md */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				BDCB3CEB2C83065E005C8E92 /* Assets.xcassets */,
 				BDCB3CED2C83065E005C8E92 /* Info.plist */,
 				BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */,
+				BDD96BCF2C8755F90098F412 /* README.md */,
 			);
 			path = WeatherAppWidget;
 			sourceTree = "<group>";
