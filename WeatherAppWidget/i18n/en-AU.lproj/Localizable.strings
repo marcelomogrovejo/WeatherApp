@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Marcelo Mogrovejo on 03/09/2024.
+  
+  source: https://medium.com/@itsuki.enjoy/localization-in-ios-swift-6b3a7735bd1a
+*/
+/* Weather Conditions */
+"weather-confition-sunny" = "Sunny";
+"weather-confition-cloudy" = "Cloudy";
+"weather-confition-rainy" = "Rainy";
+"weather-confition-windy" = "Windy";
+"weather-confition-snowy" = "Snowy";
+"weather-confition-foggy" = "Foggy";
+"weather-confition-stormy" = "Stormy";
+"weather-confition-hot" = "Hot";
+"weather-confition-cold" = "Cold";
+"weather-confition-humid" = "Humid";

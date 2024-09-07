@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Marcelo Mogrovejo on 03/09/2024.
+  
+*/
+/* Weather Conditions */
+"weather-confition-sunny" = "晴れ";
+"weather-confition-cloudy" = "曇り";
+"weather-confition-rainy" = "雨";
+"weather-confition-windy" = "風が強い";
+"weather-confition-snowy" = "雪の";
+"weather-confition-foggy" = "霧深い";
+"weather-confition-stormy" = "嵐のような";
+"weather-confition-hot" = "熱い";
+"weather-confition-cold" = "寒い";
+"weather-confition-humid" = "湿気が多い";
