@@ -1,0 +1,15 @@
+{
+  "originHash" : "1460d7eaabeb252bb2ce379a773075b4ff025351d2185776e5d08c3eabf19ec4",
+  "pins" : [
+    {
+      "identity" : "weatherrepopackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marcelomogrovejo/weatherrepopackage.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "532b79ba46a1cac810e4a550b601330b81aad592"
+      }
+    }
+  ],
+  "version" : 3
+}
