@@ -103,6 +103,7 @@
 		BDD96BFA2C8D34390098F412 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		BDD96BFC2C8D35CA0098F412 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BDD96BFE2C8D3A9A0098F412 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
+		BDD96C062C8EC8B50098F412 /* WeatherRepoPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WeatherRepoPackage; path = ../WeatherRepoPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +130,7 @@
 		BDCB3CC22C83063D005C8E92 = {
 			isa = PBXGroup;
 			children = (
+				BDD96C062C8EC8B50098F412 /* WeatherRepoPackage */,
 				BDCB3CCD2C83063D005C8E92 /* WeatherApp */,
 				BDCB3CE62C83065C005C8E92 /* WeatherAppWidget */,
 				BDCB3CE12C83065C005C8E92 /* Frameworks */,

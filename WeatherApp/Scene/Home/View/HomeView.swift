@@ -14,6 +14,15 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
+            
+            /*
+             1. is a location saved ? => get/update weather and show WeatherView
+             
+             2. else, show WelcomeView()
+             2.1. request location
+             2.2. save location
+             */
+            
             if let coordinates = locationViewModel.coordinate {
                 if let weather = weatherViewModel.weather {
                     WeatherView(weather: weather)
@@ -38,6 +47,13 @@ struct HomeView: View {
             }
         }
         .background(Color.Background.defaultColor)
+        .task {
+            do {
+                try await locationViewModel.getLocationIfExist()
+            } catch {
+                
+            }
+        }
     }
 }
 
