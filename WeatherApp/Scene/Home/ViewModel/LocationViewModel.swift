@@ -18,52 +18,100 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
     private let apiService: ApiServiceProtocol
 
     var isLoading: Bool = false
-    var coordinate: Coordinate? = nil
+
+    /// source: https://gist.github.com/runys/10a01deb2b7182c674823b2d051ad271
+    private var continuation: CheckedContinuation<Coordinate, Error>?
+
+    var coordinate: Coordinate? {
+        get async throws {
+            return try await withCheckedThrowingContinuation { continuation in
+                self.continuation = continuation
+                self.manager.requestLocation()
+            }
+        }
+    }
 //    var isCurrentLocation: Bool = false
+
+    var isAutorized: Bool = false
+
+    // MARK: - Init
 
     override init() {
         self.manager = CLLocationManager()
+        self.manager.requestWhenInUseAuthorization()
         self.apiService = ApiService()
         super.init()
         self.manager.delegate = self
     }
 
-    func requestLocation() {
-        isLoading = true
-        manager.requestLocation()
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locations = locations.first else {
-            isLoading = false
+    /// Request Authorization to access the User Location
+    /// 
+    func checkAuthorization() {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            isAutorized = false
+            manager.requestWhenInUseAuthorization()
+        default:
+            isAutorized = true
             return
         }
-        coordinate = Coordinate(latitude: locations.coordinate.latitude,
-                                longitude: locations.coordinate.longitude)
-        isLoading = false
+    }
+
+    // MARK: - CLLocation delegate
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locations = locations.last else {
+//            isLoading = false
+            return
+        }
+        let coordinate = Coordinate(latitude: locations.coordinate.latitude,
+                                    longitude: locations.coordinate.longitude)
+        continuation?.resume(returning: coordinate)
+        continuation = nil
+//        isLoading = false
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-        isLoading = false
+//        isLoading = false
         print("UI Error: something went wrong on getting location", error)
         
         // TODO: 
+//        coordinate = nil
+        
+        continuation?.resume(throwing: error)
+        continuation = nil
     }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            // If authorization status has changed to authorized
+            // start updating location
+            manager.startUpdatingLocation()
+        }
+    }
+
+    // MARK: - Public methods
 
     func getLocationIfExist() async throws {
         do {
-            let savedLocation = try await apiService.getCurrentLocation()
-            coordinate = Coordinate(latitude: savedLocation.latitude,
-                                    longitude: savedLocation.longitude)
+            if let savedLocation = try await apiService.getPersistedCurrentLocation() {
+                let savedCoordinate = Coordinate(latitude: savedLocation.latitude,
+                                                 longitude: savedLocation.longitude)
+                continuation?.resume(returning: savedCoordinate)
+                continuation = nil
+            } else {
+                // TODO: continuation throws ??
+            }
         } catch {
-            print("UI Error: something went wrong on checking location", error)
+            print("UI Error: something went wrong on getting location", error)
         }
     }
 
     func saveLocation() async throws {
 //        isLoading = true
 
-        guard let coordinate = coordinate else {
+        guard let coordinate = try await coordinate else {
+//            isLoading = false
             // TODO: UIError here ??
             return
         }
@@ -75,6 +123,6 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
             print("UI Error: unable to save the current location", error)
 //            isLoading = false
         }
-
     }
+
 }
