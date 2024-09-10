@@ -9,56 +9,43 @@ import SwiftUI
 
 struct HomeView: View {
  
-    var locationViewModel = LocationViewModel()
+    @EnvironmentObject var locationViewModel: LocationViewModel
     var weatherViewModel = WeatherViewModel()
+
+    // TODO: try locationViewMdel.coordinates ?
     @State var coordinate: Coordinate?
 
     var body: some View {
         VStack {
-            Text("isAuthorized: \(locationViewModel.isAutorized) !")
-
             if let coordinate = coordinate {
-                //                LoadingView()
-                //                    .task {
-                //                        do {
-                //                            try await locationViewModel.saveLocation()
-                //                        } catch {
-                //
-                //                        }
-                //                    }
-                
-                // TODO: Save coordinates
-                
                 if let weather = weatherViewModel.weather {
                     WeatherView(weather: weather)
                 } else {
-                    LoadingView()
+                    LoadingView(message: "Getting the weather...")
                         .task {
                             do {
                                 try await weatherViewModel.getWeather(latitude: coordinate.latitude,
                                                                       longitude: coordinate.longitude)
                             } catch {
-                                print("Error getting the weather \(error.localizedDescription)")
+                                print("V Error getting the weather \(error.localizedDescription)")
                                 
                                 // TODO:
                             }
                         }
                 }
             } else {
-                if locationViewModel.isLoading {
-                    LoadingView()
-                } else {
-                    WelcomeView(locationViewModel: locationViewModel, 
-                                coordinate: $coordinate)
-                        .onChange(of: coordinate) { oldValue, newValue in
-                            self.coordinate = newValue
-                        }
-                }
+                LoadingView(message: "Getting your location...")
             }
         }
         .background(Color.Background.defaultColor)
         .task {
-            locationViewModel.checkAuthorization()
+            do {
+                self.coordinate = try await locationViewModel.coordinate
+            } catch {
+                print("V Error getting location \(error.localizedDescription)")
+
+                // TODO:
+            }
         }
     }
 }

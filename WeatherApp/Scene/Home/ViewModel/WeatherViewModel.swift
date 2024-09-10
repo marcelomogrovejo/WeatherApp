@@ -21,7 +21,7 @@ class WeatherViewModel {
     func getWeather(latitude: Double, longitude: Double) async throws {
         do {
             let domainWeather = try await self.apiService.getCurrentWeather(latitude: latitude, longitude: longitude)
-            // TODO: Warning !!
+            // TODO: Warning !! Change for generic weather images cz it is imposible to have an image from every city world wide
             let imageUrl = "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/499000/499351-western-australia.jpg"
             weather = Weather(city: domainWeather.cityName,
                               weather: domainWeather.weather,
