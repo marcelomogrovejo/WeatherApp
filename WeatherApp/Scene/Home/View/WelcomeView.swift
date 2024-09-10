@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
-import CoreLocationUI
 
 struct WelcomeView: View {
 
     var locationViewModel: LocationViewModel?
+
+    /// Source: Gemini
+    /// Source: https://medium.gonzalofuentes.com/obtaining-user-location-with-swift-and-swiftui-a-step-by-step-guide-3987ba401782
+    @Binding var coordinate: Coordinate?
 
     var body: some View {
         VStack {
@@ -22,12 +25,16 @@ struct WelcomeView: View {
                 Text("Please share your location to get the weather on your area.")
                     .padding()
 
-                LocationButton(.shareCurrentLocation) {
-                    locationViewModel?.requestLocation()
+                // TODO: Move to UIComponent !!
+                MainButton(title: "Share my location", iconName: "location.fill") {
+                    Task {
+                        do {
+                            coordinate = try await locationViewModel?.coordinate
+                        } catch {
+                            // TODO: -
+                        }
+                    }
                 }
-                .cornerRadius(20)
-                .symbolVariant(.fill)
-                .foregroundColor(.white)
             }
             .multilineTextAlignment(.center)
             .padding()
@@ -36,6 +43,8 @@ struct WelcomeView: View {
     }
 }
 
+
 #Preview {
-    WelcomeView()
+    let coordinate = Coordinate(latitude: 1.111, longitude: 2.222)
+    return WelcomeView(coordinate: .constant(coordinate))
 }

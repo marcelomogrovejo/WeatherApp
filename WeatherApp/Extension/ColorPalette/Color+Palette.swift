@@ -19,4 +19,8 @@ extension Color {
         static let secondaryColor: Color = Color.init("txt-secondary", bundle: .main)
     }
 
+    struct Button {
+        static let backgroundColor: Color = Color.init("btn-bkg-main", bundle: .main)
+    }
+
 }
