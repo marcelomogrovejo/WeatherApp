@@ -10,6 +10,7 @@ import Foundation
 struct Weather {
     let city: String
     let weather: String
+    let iconUrl: String?
     let feelLikeTemp: Double
     let imageUrl: String
     let minTemperature: Double

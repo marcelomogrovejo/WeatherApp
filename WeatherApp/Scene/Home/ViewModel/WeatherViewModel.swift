@@ -25,6 +25,7 @@ class WeatherViewModel {
             let imageUrl = "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/499000/499351-western-australia.jpg"
             weather = Weather(city: domainWeather.cityName,
                               weather: domainWeather.weather,
+                              iconUrl: domainWeather.iconUrl,
                               feelLikeTemp: domainWeather.feelLike,
                               imageUrl: imageUrl,
                               minTemperature: domainWeather.minTemperature,

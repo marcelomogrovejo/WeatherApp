@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1168432C907C15005C7B62 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1168422C907C15005C7B62 /* ImageView.swift */; };
 		BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */; };
 		BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54612C8373540098AADD /* WeatherEnum.swift */; };
 		BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54632C8376790098AADD /* Color+Palette.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD1168422C907C15005C7B62 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConfig.swift; sourceTree = "<group>"; };
 		BD7C54612C8373540098AADD /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 		BD7C54632C8376790098AADD /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				BDD96BE72C8C806A0098F412 /* LoadingView.swift */,
 				BDD96BF52C8CA5D20098F412 /* RoundedCorner.swift */,
 				BDD96C072C8F63350098F412 /* MainButton.swift */,
+				BD1168422C907C15005C7B62 /* ImageView.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				BDD96BF22C8C9F4B0098F412 /* WeatherView.swift in Sources */,
 				BDCB3CD12C83063D005C8E92 /* ContentView.swift in Sources */,
 				BDD96BD82C8C77140098F412 /* HomeView.swift in Sources */,
+				BD1168432C907C15005C7B62 /* ImageView.swift in Sources */,
 				BDD96BFB2C8D34390098F412 /* WeatherViewModel.swift in Sources */,
 				BDD96BFD2C8D35CA0098F412 /* Weather.swift in Sources */,
 				BDD96BF62C8CA5D20098F412 /* RoundedCorner.swift in Sources */,
