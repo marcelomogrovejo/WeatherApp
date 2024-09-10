@@ -11,14 +11,10 @@ import WeatherRepoPackage
 
 /// Source: https://www.createwithswift.com/using-the-locationbutton-in-swiftui-for-one-time-location-access/
 ///
-@Observable
-class LocationViewModel: NSObject, CLLocationManagerDelegate {
+class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     private let manager: CLLocationManager
     private let apiService: ApiServiceProtocol
-
-    var isLoading: Bool = false
-
     /// source: https://gist.github.com/runys/10a01deb2b7182c674823b2d051ad271
     private var continuation: CheckedContinuation<Coordinate, Error>?
 
@@ -30,15 +26,14 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
             }
         }
     }
-//    var isCurrentLocation: Bool = false
 
-    var isAutorized: Bool = false
+    @Published var isAutorized: Bool = false
 
     // MARK: - Init
 
     override init() {
         self.manager = CLLocationManager()
-        self.manager.requestWhenInUseAuthorization()
+        self.manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         self.apiService = ApiService()
         super.init()
         self.manager.delegate = self
@@ -48,32 +43,34 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locations = locations.last else {
-//            isLoading = false
             return
         }
         let coordinate = Coordinate(latitude: locations.coordinate.latitude,
                                     longitude: locations.coordinate.longitude)
+        print("Coords: \(coordinate.latitude), \(coordinate.longitude)")
         continuation?.resume(returning: coordinate)
         continuation = nil
-//        isLoading = false
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
-//        isLoading = false
-        print("UI Error: something went wrong on getting location", error)
-        
+        print("VM Error: something went wrong on getting location", error)
+
         // TODO: 
-//        coordinate = nil
-        
+
+
         continuation?.resume(throwing: error)
         continuation = nil
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse || status == .authorizedAlways {
+            isAutorized = true
             // If authorization status has changed to authorized
             // start updating location
-            manager.startUpdatingLocation()
+            // TODO: WARINING ! It is triggering didUpdateLocation() each 5 seconds.
+//            manager.startUpdatingLocation()
+        } else {
+            isAutorized = false
         }
     }
 
@@ -84,14 +81,13 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
     func checkAuthorization() {
         switch manager.authorizationStatus {
         case .notDetermined:
-            isAutorized = false
             manager.requestWhenInUseAuthorization()
         default:
-            isAutorized = true
             return
         }
     }
 
+    /*
     /// <#Description#>
     func getLocationIfExist() async throws {
         do {
@@ -126,5 +122,5 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
 //            isLoading = false
         }
     }
-
+     */
 }

@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct LoadingView: View {
+
+    var message: String?
+
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .gray))
 
-            Text("Loading...")
+            Text(message ?? "Loading...")
                 .font(.footnote)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

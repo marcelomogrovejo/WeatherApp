@@ -9,11 +9,11 @@ import SwiftUI
 
 struct WelcomeView: View {
 
-    var locationViewModel: LocationViewModel?
+    @EnvironmentObject var locationViewModel: LocationViewModel
 
     /// Source: Gemini
     /// Source: https://medium.gonzalofuentes.com/obtaining-user-location-with-swift-and-swiftui-a-step-by-step-guide-3987ba401782
-    @Binding var coordinate: Coordinate?
+//    @Binding var coordinate: Coordinate?
 
     var body: some View {
         VStack {
@@ -27,13 +27,14 @@ struct WelcomeView: View {
 
                 // TODO: Move to UIComponent !!
                 MainButton(title: "Share my location", iconName: "location.fill") {
-                    Task {
-                        do {
-                            coordinate = try await locationViewModel?.coordinate
-                        } catch {
+//                    Task {
+//                        do {
+//                            coordinate = try await locationViewModel?.coordinate
+//                        } catch {
                             // TODO: -
-                        }
-                    }
+//                        }
+                        locationViewModel.checkAuthorization()
+//                    }
                 }
             }
             .multilineTextAlignment(.center)
@@ -45,6 +46,7 @@ struct WelcomeView: View {
 
 
 #Preview {
-    let coordinate = Coordinate(latitude: 1.111, longitude: 2.222)
-    return WelcomeView(coordinate: .constant(coordinate))
+//    let coordinate = Coordinate(latitude: 1.111, longitude: 2.222)
+//    return WelcomeView(coordinate: .constant(coordinate))
+    WelcomeView()
 }
