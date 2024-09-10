@@ -39,6 +39,7 @@
 		BDD96BFD2C8D35CA0098F412 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BFC2C8D35CA0098F412 /* Weather.swift */; };
 		BDD96BFF2C8D3A9A0098F412 /* Double+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BFE2C8D3A9A0098F412 /* Double+Rounded.swift */; };
 		BDD96C042C8D5F5D0098F412 /* WeatherRepoPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BDD96C032C8D5F5D0098F412 /* WeatherRepoPackage */; };
+		BDD96C082C8F63350098F412 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96C072C8F63350098F412 /* MainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		BDD96BFC2C8D35CA0098F412 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BDD96BFE2C8D3A9A0098F412 /* Double+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Rounded.swift"; sourceTree = "<group>"; };
 		BDD96C062C8EC8B50098F412 /* WeatherRepoPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WeatherRepoPackage; path = ../WeatherRepoPackage; sourceTree = "<group>"; };
+		BDD96C072C8F63350098F412 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			children = (
 				BDD96BE72C8C806A0098F412 /* LoadingView.swift */,
 				BDD96BF52C8CA5D20098F412 /* RoundedCorner.swift */,
+				BDD96C072C8F63350098F412 /* MainButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				BDCB3CCF2C83063D005C8E92 /* WeatherAppApp.swift in Sources */,
 				BDD96BF92C8CA7490098F412 /* WeatherRow.swift in Sources */,
 				BDD96BE02C8C7DC70098F412 /* WelcomeView.swift in Sources */,
+				BDD96C082C8F63350098F412 /* MainButton.swift in Sources */,
 				BDD96BE32C8C7E8C0098F412 /* Color+Palette.swift in Sources */,
 				BDD96BE82C8C806A0098F412 /* LoadingView.swift in Sources */,
 				BDD96BEB2C8C84AF0098F412 /* Coordinate.swift in Sources */,

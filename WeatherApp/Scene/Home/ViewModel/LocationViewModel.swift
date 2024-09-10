@@ -44,19 +44,6 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
         self.manager.delegate = self
     }
 
-    /// Request Authorization to access the User Location
-    /// 
-    func checkAuthorization() {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            isAutorized = false
-            manager.requestWhenInUseAuthorization()
-        default:
-            isAutorized = true
-            return
-        }
-    }
-
     // MARK: - CLLocation delegate
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -92,6 +79,20 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
 
     // MARK: - Public methods
 
+    /// Request Authorization to access the User Location
+    ///
+    func checkAuthorization() {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            isAutorized = false
+            manager.requestWhenInUseAuthorization()
+        default:
+            isAutorized = true
+            return
+        }
+    }
+
+    /// <#Description#>
     func getLocationIfExist() async throws {
         do {
             if let savedLocation = try await apiService.getPersistedCurrentLocation() {
@@ -107,6 +108,7 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
         }
     }
 
+    /// <#Description#>
     func saveLocation() async throws {
 //        isLoading = true
 

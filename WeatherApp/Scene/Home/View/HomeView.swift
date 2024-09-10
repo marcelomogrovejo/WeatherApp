@@ -15,7 +15,7 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            Text("isAuthorized: \(locationViewModel.isAutorized)")
+            Text("isAuthorized: \(locationViewModel.isAutorized) !")
 
             if let coordinate = coordinate {
                 //                LoadingView()
@@ -26,6 +26,9 @@ struct HomeView: View {
                 //
                 //                        }
                 //                    }
+                
+                // TODO: Save coordinates
+                
                 if let weather = weatherViewModel.weather {
                     WeatherView(weather: weather)
                 } else {

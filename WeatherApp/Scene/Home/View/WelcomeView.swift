@@ -25,8 +25,8 @@ struct WelcomeView: View {
                 Text("Please share your location to get the weather on your area.")
                     .padding()
 
-                // TODO: Move to UIComponent !
-                Button("Share my location", systemImage: "location.fill") {
+                // TODO: Move to UIComponent !!
+                MainButton(title: "Share my location", iconName: "location.fill") {
                     Task {
                         do {
                             coordinate = try await locationViewModel?.coordinate
@@ -35,10 +35,6 @@ struct WelcomeView: View {
                         }
                     }
                 }
-                .padding()
-                .tint(.Button.backgroundColor)
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.roundedRectangle(radius: 20))
             }
             .multilineTextAlignment(.center)
             .padding()
