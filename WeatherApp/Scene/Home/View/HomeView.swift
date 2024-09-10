@@ -21,7 +21,7 @@ struct HomeView: View {
                 if let weather = weatherViewModel.weather {
                     WeatherView(weather: weather)
                 } else {
-                    LoadingView(message: "Getting the weather...")
+                    LoadingView(message: "Getting weather...")
                         .task {
                             do {
                                 try await weatherViewModel.getWeather(latitude: coordinate.latitude,

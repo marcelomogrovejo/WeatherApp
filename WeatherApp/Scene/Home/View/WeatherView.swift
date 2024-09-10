@@ -30,16 +30,16 @@ struct WeatherView: View {
 
                 VStack {
                     HStack {
-                        VStack(spacing: 20) {
-                            // TODO:
-                            Image(systemName: "sun.max")
-                                .font(.system(size: 40))
+                        VStack(alignment: .center) {
+                            // TODO: https://openweathermap.org/weather-conditions
+                            ImageView(imageUrl: weather.iconUrl ?? "")
+                                .frame(width: 100, height: 100)
                                 .foregroundStyle(Color.Text.mainColor)
 
                             Text(weather.weather)
                                 .foregroundStyle(Color.Text.mainColor)
+                                .fontWeight(.bold)
                         }
-                        .frame(width: 150, alignment: .leading)
 
                         Spacer()
 
@@ -49,15 +49,11 @@ struct WeatherView: View {
                             .foregroundStyle(Color.Text.mainColor)
                             .padding()
                     }
+                    .padding(.vertical)
 
-                    AsyncImage(url: URL(string: weather.imageUrl)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 350)
-                    } placeholder: {
-                        ProgressView()
-                    }
+                    ImageView(imageUrl: weather.imageUrl)
+                        .frame(width: 350)
+                        .cornerRadius(20, corners: .allCorners)
 
                     Spacer()
                 }
@@ -71,9 +67,10 @@ struct WeatherView: View {
 
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Weather now")
+                        .font(.system(size: 24))
                         .fontWeight(.bold)
                         .foregroundStyle(Color.Text.secondaryColor)
-                        .padding(.bottom)
+                        .padding(.vertical, 3)
 
                     HStack {
                         WeatherRow(logo: "thermometer",
@@ -114,7 +111,8 @@ struct WeatherView: View {
 #Preview {
     let fakeWeather = Weather(city: "Nedlands",
                               weather: "Clear",
-                              feelLikeTemp: 18.9,
+                              iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
+                              feelLikeTemp: 24.9,
                               imageUrl: "https://www.nicheliving.com.au/wp-content/uploads/2021/11/nedlands-blog-hero-img.jpg",
                               minTemperature: 11.2,
                               maxTemperature: 22.3,

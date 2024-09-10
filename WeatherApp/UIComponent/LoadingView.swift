@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
 
+    var isLoadingMessage: Bool = true
     var message: String?
 
     var body: some View {
@@ -16,13 +17,15 @@ struct LoadingView: View {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .gray))
 
-            Text(message ?? "Loading...")
-                .font(.footnote)
+            if isLoadingMessage {
+                Text(message ?? "Loading...")
+                    .font(.footnote)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    LoadingView()
+    LoadingView(isLoadingMessage: false)
 }
