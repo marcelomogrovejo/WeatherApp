@@ -31,8 +31,11 @@ struct WeatherView: View {
                 VStack {
                     HStack {
                         VStack(alignment: .center) {
-                            // TODO: https://openweathermap.org/weather-conditions
-                            ImageView(imageUrl: weather.iconUrl ?? "")
+                            Image(systemName: weather.icon ?? "questionmark")
+                                .resizable()
+                                .scaledToFit()
+                                .padding()
+                                .font(.largeTitle)
                                 .frame(width: 100, height: 100)
                                 .foregroundStyle(Color.Text.mainColor)
 
@@ -111,7 +114,7 @@ struct WeatherView: View {
 #Preview {
     let fakeWeather = Weather(city: "Nedlands",
                               weather: "Clear",
-                              iconUrl: "https://openweathermap.org/img/wn/10d@2x.png",
+                              icon: "cloud.rainbow.half",
                               feelLikeTemp: 24.9,
                               imageUrl: "https://www.nicheliving.com.au/wp-content/uploads/2021/11/nedlands-blog-hero-img.jpg",
                               minTemperature: 11.2,

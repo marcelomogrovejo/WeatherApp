@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import WeatherRepoPackage
+import WidgetKit
 
 /// Source: https://www.createwithswift.com/using-the-locationbutton-in-swiftui-for-one-time-location-access/
 ///
@@ -69,8 +70,12 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             // start updating location
             // TODO: WARINING ! It is triggering didUpdateLocation() each 5 seconds.
 //            manager.startUpdatingLocation()
+            /// Updates the location if the device moves 500 meters or more
+//            manager.startMonitoringSignificantLocationChanges()
         } else {
             isAutorized = false
+//            manager.stopUpdatingLocation()
+//            manager.stopMonitoringSignificantLocationChanges()
         }
     }
 

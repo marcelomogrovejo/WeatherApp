@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 // 2. View
 struct WeatherWidgetView: View {
@@ -52,6 +53,9 @@ struct WeatherWidgetView: View {
 }
 
 #Preview() {
-    let weatherEntry = WeatherEntry.randomEntry(date: .now)
-    return WeatherWidgetView(entry: weatherEntry)
+    VStack {
+        WeatherWidgetView(entry: WeatherEntry.randomEntry(date: .now))
+    }
+    .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
 }
+
