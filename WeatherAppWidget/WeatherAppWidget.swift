@@ -24,19 +24,19 @@ struct WeatherEntry: TimelineEntry {
     /// - Parameter date: a date
     /// - Returns: a Weather entry
     ///
-    static func randomEntry(date: Date) -> WeatherEntry {
-        let locations = ["Perth", "Adelaide", "Sydney", "Melbourne", "Hobart", "Cairns", "Darwin", "Camberra", "New Castle", "Mendoza"]
-        let randomLocation = locations[Int.random(in: 0..<locations.count)]
-        let randomDegrees = Int.random(in: -30..<44)
-        guard let randomWeatherCondition = WeatherCondition.randomCondition() else {
-            let dummyWeather = Weather(condition: .cloudy, location: randomLocation, degrees: randomDegrees)
-            return WeatherEntry(date: date, currentWeather: dummyWeather)
-        }
-        let randomWeather = Weather(condition: randomWeatherCondition,
-                                    location: randomLocation,
-                                    degrees: randomDegrees)
-        return WeatherEntry(date: date, currentWeather: randomWeather)
-    }
+//    static func randomEntry(date: Date) -> WeatherEntry {
+//        let locations = ["Perth", "Adelaide", "Sydney", "Melbourne", "Hobart", "Cairns", "Darwin", "Camberra", "New Castle", "Mendoza"]
+//        let randomLocation = locations[Int.random(in: 0..<locations.count)]
+//        let randomDegrees = Int.random(in: -30..<44)
+//        guard let randomWeatherCondition = WeatherCondition.randomCondition() else {
+//            let dummyWeather = Weather(condition: .cloudy, location: randomLocation, degrees: randomDegrees)
+//            return WeatherEntry(date: date, currentWeather: dummyWeather)
+//        }
+//        let randomWeather = Weather(condition: randomWeatherCondition,
+//                                    location: randomLocation,
+//                                    degrees: randomDegrees)
+//        return WeatherEntry(date: date, currentWeather: randomWeather)
+//    }
 }
 
 // 3. Timeline Provider
@@ -45,13 +45,31 @@ struct WeatherTimelineProvider: TimelineProvider {
 
     // providing dummy data to the system to render a placeholder UI while waiting for the widget to get ready
     func placeholder(in context: Context) -> WeatherEntry {
-        let dummyWeather = Weather(condition: .cloudy, location: "Adelaide", degrees: 18)
+        let dummyWeather = Weather(city: "Dummy City",
+                                   weather: "Clear",
+                                   icon: "sun.max.fill",
+                                   feelLikeTemp: 19.4,
+                                   imageUrl: "",
+                                   minTemperature: 18.0,
+                                   maxTemperature: 22.2,
+                                   windSpeed: 6.2,
+                                   humidity: 20)
+//        Weather(condition: .cloudy, location: "Adelaide", degrees: 18)
         return WeatherEntry(date: .now, currentWeather: dummyWeather)
     }
 
     // provides the data required by the system to render the widget in the widget gallery
     func getSnapshot(in context: Context, completion: @escaping (WeatherEntry) -> Void) {
-        let dummyWeather = Weather(condition: .sunny, location: "Perth", degrees: 25)
+        let dummyWeather = Weather(city: "Snapshot City",
+                                   weather: "Rainy",
+                                   icon: "cloud.rain",
+                                   feelLikeTemp: 17.6,
+                                   imageUrl: "",
+                                   minTemperature: 14.0,
+                                   maxTemperature: 20.0,
+                                   windSpeed: 2.8,
+                                   humidity: 15)
+//        Weather(condition: .sunny, location: "Perth", degrees: 25)
         let snapshotEntry = WeatherEntry(date: .now, currentWeather: dummyWeather)
         completion(snapshotEntry)
     }
@@ -65,7 +83,19 @@ struct WeatherTimelineProvider: TimelineProvider {
             // TODO: Warning !!
             // Change to update by hours instead of minutes
             let entryDate = Calendar.current.date(byAdding: .second, value: hourOffset, to: currentDate)!
-            let entry = WeatherEntry.randomEntry(date: entryDate)
+//            let entry = WeatherEntry.randomEntry(date: entryDate)
+            // TODO: WARNING !
+            // Figure out how to get the Weather from the main app
+            let temp = Weather(city: "Snapshot City",
+                                weather: "Rainy",
+                                icon: "cloud.rain",
+                                feelLikeTemp: 17.6,
+                                imageUrl: "",
+                                minTemperature: 14.0,
+                                maxTemperature: 20.0,
+                                windSpeed: 2.8,
+                                humidity: 15)
+            let entry = WeatherEntry(date: .now, currentWeather: temp)
             entries.append(entry)
         }
 
@@ -98,7 +128,18 @@ struct WeatherAppWidget: Widget {
     WeatherAppWidget()
 } timeline: {
     WeatherEntry(date: .now,
-                 currentWeather: Weather(condition: .windy,
-                                         location: "Hong Kong", 
-                                         degrees: 7))
+                 currentWeather: 
+//                    Weather(condition: .windy,
+//                                         location: "Hong Kong",
+//                                         degrees: 7)
+                                    Weather(city: "Snapshot City",
+                                            weather: "Rainy",
+                                            icon: "cloud.rain",
+                                            feelLikeTemp: 17.6,
+                                            imageUrl: "",
+                                            minTemperature: 14.0,
+                                            maxTemperature: 20.0,
+                                            windSpeed: 2.8,
+                                            humidity: 15)
+    )
 }
