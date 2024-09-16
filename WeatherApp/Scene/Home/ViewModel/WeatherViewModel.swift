@@ -22,11 +22,13 @@ class WeatherViewModel {
         do {
 //            let domainWeather = try await self.apiService.getCurrentWeather(latitude: latitude, longitude: longitude)
             let domainWeather = try await self.apiService.getCurrentWeatherV2(latitude: latitude, longitude: longitude)
-            let combinedHourlyWeathers = domainWeather.hourlyWeatherTime.enumerated().map { (index, time) in
-                HourlyWeather(time: time, 
+            let combinedHourlyWeathers = domainWeather.hourlyWeatherTimes.enumerated().map { (index, time) in
+                // TODO: WARNING ! isDay !!
+                let weatherConditionIconName = Weather.getIconName(domainWeather.hourlyWeatherCodes[index], isDay: true)
+                return HourlyWeather(time: time,
                               // TODO: get the weather from the code
-                              weather: "\(domainWeather.hourlyWeatherCode[index])",
-                              temperature: domainWeather.hourlyWeatherTemperature[index])
+                              weatherIcon: weatherConditionIconName,
+                              temperature: domainWeather.hourlyWeatherTemperatures[index])
             }
             weather = Weather(city: "Dummy city", // TODO Now comes from the location manager ??
                               iconName: Weather.getIconName(domainWeather.weatherCode, isDay: domainWeather.isDay),

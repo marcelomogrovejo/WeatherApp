@@ -55,7 +55,7 @@ struct WeatherView: View {
                     .padding(.vertical)
 
                     WeatherHourlyView(hourlyWeathers: weather.hourly)
-                        .frame(width: .infinity, height: 90)
+                        .frame(width: 350, height: 90)
                         .padding(.vertical)
 
                     Spacer()
@@ -76,25 +76,25 @@ struct WeatherView: View {
                         .padding(.vertical, 3)
 
                     HStack {
-                        WeatherRow(logo: "thermometer",
+                        WeatherRow(iconName: "thermometer",
                                    name: "Min temp",
                                    value: weather.minTemperature.roundDouble() + "°")
 
                         Spacer()
 
-                        WeatherRow(logo: "thermometer",
+                        WeatherRow(iconName: "thermometer",
                                    name: "Max temp",
                                    value: weather.maxTemperature.roundDouble() + "°")
                     }
 
                     HStack {
-                        WeatherRow(logo: "wind",
-                                   name: "Wind speed", 
+                        WeatherRow(iconName: "wind",
+                                   name: "Wind speed",
                                    value: weather.windSpeed.roundDouble() + "m/s")
 
                         Spacer()
 
-                        WeatherRow(logo: "humidity",
+                        WeatherRow(iconName: "humidity",
                                    name: "Humidity",
                                    value: "\(weather.humidity)" + "%")
                     }
@@ -116,7 +116,7 @@ struct WeatherView: View {
     for i in 0...23 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00", 
-                                                 weather: "",
+                                                 weatherIcon: "",
                                                  temperature: Double.random(in: -4...33)))
     }
     let dummyWeather = Weather(city: "Nedlands",

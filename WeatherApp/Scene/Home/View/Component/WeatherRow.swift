@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct WeatherRow: View {
-    var logo: String
+    var iconName: String
     var name: String
     var value: String
 
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: logo)
+            Image(systemName: iconName)
                 .font(.title2)
                 .frame(width: 20, height: 20)
                 .padding()
@@ -36,5 +36,5 @@ struct WeatherRow: View {
 }
 
 #Preview {
-    WeatherRow(logo: "thermometer", name: "Feels like", value: "8°")
+    WeatherRow(iconName: "thermometer", name: "Feels like", value: "8°")
 }

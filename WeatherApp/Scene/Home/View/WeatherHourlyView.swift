@@ -15,8 +15,8 @@ struct WeatherHourlyView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(hourlyWeathers) { hourlyWeather in
-                    WeatherHourlyRow(hour: hourlyWeather.time, 
-                                     iconName: hourlyWeather.weather,
+                    WeatherHourlyRow(hour: hourlyWeather.time,
+                                     iconName: hourlyWeather.weatherIcon,
                                      temperature: hourlyWeather.temperature)
                 }
             }
@@ -31,7 +31,7 @@ struct WeatherHourlyView: View {
     for i in 1...24 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00",
-                                                 weather: "...",
+                                                 weatherIcon: "...",
                                                  temperature: Double.random(in: -4...33)))
     }
     return WeatherHourlyView(hourlyWeathers: dummyHourlyWeathers)

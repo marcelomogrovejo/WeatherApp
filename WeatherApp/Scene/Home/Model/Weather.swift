@@ -11,7 +11,6 @@ import WeatherRepoPackage
 struct Weather {
     // TODO: get it from lat and lon
     let city: String
-    // TODO: get iconName from weatherCode
     let iconName: String?
     let feelLikeTemp: Double
     let humidity: Int
@@ -71,8 +70,6 @@ struct HourlyWeather: Identifiable {
     // TODO: convert to Date
     let time: String
     // TODO: change code by localizable string
-    let weather: String
-    // TODO: get iconName from weatherCode
-//    let iconName: String
+    let weatherIcon: String
     let temperature: Double
 }
