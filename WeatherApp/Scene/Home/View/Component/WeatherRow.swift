@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct WeatherRow: View {
+
+    @State private var fontSize: CGFloat = 14
+    @State private var fontColor: Color = Color.Text.secondaryColor
+
     var iconName: String
     var name: String
-    var value: String
+    var value: Double
+    var unit: String?
 
     var body: some View {
         HStack(spacing: 20) {
@@ -26,15 +31,23 @@ struct WeatherRow: View {
                     .font(.caption)
                     .foregroundStyle(Color.Text.secondaryColor)
 
-                Text(value)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.Text.secondaryColor)
+                TemperatureView(fontSize: $fontSize,
+                                fontColor: $fontColor,
+                                temperature: value,
+                                unit: unit ?? "")
+
             }
+        }
+        .onAppear {
+            fontSize += 2
         }
     }
 }
 
 #Preview {
-    WeatherRow(iconName: "thermometer", name: "Feels like", value: "8°")
+    WeatherRow(iconName: "thermometer", 
+               name: "Feels like",
+               value: 8.4,
+               unit: "°C")
+        .background(.red)
 }

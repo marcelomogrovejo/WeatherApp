@@ -26,20 +26,24 @@ class WeatherViewModel {
                 // TODO: WARNING ! isDay !!
                 let weatherConditionIconName = Weather.getIconName(domainWeather.hourlyWeatherCodes[index], isDay: true)
                 return HourlyWeather(time: time,
-                              // TODO: get the weather from the code
-                              weatherIcon: weatherConditionIconName,
-                              temperature: domainWeather.hourlyWeatherTemperatures[index])
+                                     weatherIcon: weatherConditionIconName,
+                                     temperature: domainWeather.hourlyWeatherTemperatures[index],
+                                     temperatureUnit: domainWeather.hourlyWeatherTemperatureUnit)
             }
             weather = Weather(city: "Dummy city", // TODO Now comes from the location manager ??
                               iconName: Weather.getIconName(domainWeather.weatherCode, isDay: domainWeather.isDay),
                               feelLikeTemp: domainWeather.feelLike,
+                              feelLikeUnit: domainWeather.feelLikeUnit,
                               humidity: domainWeather.humidity,
+                              humidityUnit: domainWeather.humidityUnit,
                               windSpeed: domainWeather.windSpeed,
+                              windSpeedUnit: domainWeather.windSpeedUnit,
                               hourly: combinedHourlyWeathers,
-                              // TODO: get the weather from the code
-                              weather: "Dummy weather",
+                              weatherCondition: Weather.getCondition(domainWeather.weatherCode),
                               minTemperature: domainWeather.minTemperature,
+                              minTemperatureUnit: domainWeather.minTemperatureUnit,
                               maxTemperature: domainWeather.maxTemperature,
+                              maxTemperatureUnit: domainWeather.maxTemperatureUnit,
                               sunrise: domainWeather.sunrise,
                               sunset: domainWeather.sunset)
         } catch {

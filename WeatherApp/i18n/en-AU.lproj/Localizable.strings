@@ -7,13 +7,32 @@
   source: https://medium.com/@itsuki.enjoy/localization-in-ios-swift-6b3a7735bd1a
 */
 /* Weather Conditions */
-"weather-confition-sunny" = "Sunny";
+"weather-confition-clear" = "Clear";
+"weather-confition-mostly-clear" = "Mostly Clear";
+"weather-confition-partly-cloudy" = "Partly Cloudy";
 "weather-confition-cloudy" = "Cloudy";
-"weather-confition-rainy" = "Rainy";
-"weather-confition-windy" = "Windy";
-"weather-confition-snowy" = "Snowy";
-"weather-confition-foggy" = "Foggy";
-"weather-confition-stormy" = "Stormy";
-"weather-confition-hot" = "Hot";
-"weather-confition-cold" = "Cold";
-"weather-confition-humid" = "Humid";
+"weather-confition-fog" = "Fog";
+"weather-confition-freezing-fog" = "Freezing Fog";
+"weather-confition-light-drizzle" = "Light Drizzle";
+"weather-confition-drizzle" = "Drizzle";
+"weather-confition-heavy-drizzle" = "Heavy Drizzle";
+"weather-confition-light-freezing-drizzle" = "Light Freezing Drizzle";
+"weather-confition-freezing-drizzle" = "Freezing Drizzle";
+"weather-confition-light-rain" = "Light Rain";
+"weather-confition-rain" = "Rain";
+"weather-confition-heavy-rain" = "Heavy Rain";
+"weather-confition-light-freezing-rain" = "Light Freezing Rain";
+"weather-confition-freezing-rain" = "Freezing Rain";
+"weather-confition-light-snow" = "Light Snow";
+"weather-confition-snow" = "Snow";
+"weather-confition-heavy-snow" = "Heavy Snow";
+"weather-confition-snow-grains" = "Snow Grains";
+"weather-confition-light-rain-shower" = "Light Rain Shower";
+"weather-confition-rain-shower" = "Rain Shower";
+"weather-confition-heavy-rain-shower" = "Heavy Rain Shower";
+"weather-confition-show-shower" = "Snow Shower";
+"weather-confition-heavy-snow-shower" = "Heavy Snow Shower";
+"weather-confition-thunderstorm" = "Thunderstorm";
+"weather-confition-hailstorm" = "Hailstorm";
+"weather-confition-heavy-hailstorm" = "Heavy Hailstorm";
+"weather-condition-default" = "";

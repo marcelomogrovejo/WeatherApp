@@ -6,13 +6,34 @@
   
 */
 /* Weather Conditions */
-"weather-confition-sunny" = "Soleado";
+"weather-confition-clear" = "Despejado";
+"weather-confition-mostly-clear" = "Mayormente Despejado";
+"weather-confition-partly-cloudy" = "Parcialmente Nublado";
 "weather-confition-cloudy" = "Nublado";
-"weather-confition-rainy" = "Lluvioso";
-"weather-confition-windy" = "Ventoso";
-"weather-confition-snowy" = "Nevando";
-"weather-confition-foggy" = "Niebla";
-"weather-confition-stormy" = "Tormentoso";
-"weather-confition-hot" = "Caluroso";
-"weather-confition-cold" = "Frio";
-"weather-confition-humid" = "Húmedo";
+"weather-confition-fog" = "Niebla";
+"weather-confition-freezing-fog" = "Niebla Helada";
+"weather-confition-light-drizzle" = "Llovizna Suave";
+"weather-confition-drizzle" = "Llovizna";
+"weather-confition-heavy-drizzle" = "Fuerte Llovizna";
+"weather-confition-light-freezing-drizzle" = "Presipitación Helada Suave";
+"weather-confition-freezing-drizzle" = "Presipitación Helada";
+"weather-confition-light-rain" = "Lluvia Suave";
+"weather-confition-rain" = "Lluvia";
+"weather-confition-heavy-rain" = "Fuerte Lluvia";
+"weather-confition-light-freezing-rain" = "Lluvia Helada Suave";
+"weather-confition-freezing-rain" = "Lluvia Helada";
+"weather-confition-light-snow" = "Nevada Suave";
+"weather-confition-snow" = "Nevada";
+"weather-confition-heavy-snow" = "Nevada Fuerte";
+
+"weather-confition-snow-grains" = "Snow Grains";
+
+"weather-confition-light-rain-shower" = "Lluvias Aisladas Suaves";
+"weather-confition-rain-shower" = "Lluvias Aisladas";
+"weather-confition-heavy-rain-shower" = "Lluvias Aisladas Fuertes";
+"weather-confition-show-shower" = "Nevadas Aisladas";
+"weather-confition-heavy-snow-shower" = "Nevadas Aisladas Fuertes";
+"weather-confition-thunderstorm" = "Tormenta";
+"weather-confition-hailstorm" = "Granizo";
+"weather-confition-heavy-hailstorm" = "Granizo Fuerte";
+"weather-condition-default" = "-";

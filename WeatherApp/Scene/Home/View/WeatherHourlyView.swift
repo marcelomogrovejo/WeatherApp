@@ -17,12 +17,13 @@ struct WeatherHourlyView: View {
                 ForEach(hourlyWeathers) { hourlyWeather in
                     WeatherHourlyRow(hour: hourlyWeather.time,
                                      iconName: hourlyWeather.weatherIcon,
-                                     temperature: hourlyWeather.temperature)
+                                     temperature: hourlyWeather.temperature,
+                                     temperatureUnit: hourlyWeather.temperatureUnit)
                 }
             }
         }
-        .background(Color.Background.defaultColor)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.3))
+        .frame(height: 150)
     }
 }
 
@@ -31,8 +32,9 @@ struct WeatherHourlyView: View {
     for i in 1...24 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00",
-                                                 weatherIcon: "...",
-                                                 temperature: Double.random(in: -4...33)))
+                                                 weatherIcon: "cloud.rainbow.half",
+                                                 temperature: Double.random(in: -4...33),
+                                                 temperatureUnit: "°C"))
     }
     return WeatherHourlyView(hourlyWeathers: dummyHourlyWeathers)
 }

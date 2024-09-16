@@ -26,7 +26,7 @@ struct WeatherWidgetView: View {
                 Text(entry.currentWeather.iconName ?? "rainbow")
                     .font(.title)
 //                Text("\(entry.currentWeather.condition.description)")
-                Text(entry.currentWeather.weather)
+                Text(entry.currentWeather.weatherCondition)
                     .font(.title3)
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.6)
@@ -59,13 +59,18 @@ struct WeatherWidgetView: View {
 #Preview() {
     let previewWeather = Weather(city: "Preview City",
                                  iconName: "rainbow",
-                                 feelLikeTemp: 32.0,
+                                 feelLikeTemp: 32.0, 
+                                 feelLikeUnit: "°",
                                  humidity: 10,
+                                 humidityUnit: "%",
                                  windSpeed: 8.5,
+                                 windSpeedUnit: "km/h",
                                  hourly: [],
-                                 weather: "Rainbow",
+                                 weatherCondition: "Rainbow",
                                  minTemperature: 21.6,
+                                 minTemperatureUnit: "°",
                                  maxTemperature: 39.9,
+                                 maxTemperatureUnit: "°",
                                  sunrise: "",
                                  sunset: "")
     let previewWeatherEntry = WeatherEntry(date: .now, currentWeather: previewWeather)

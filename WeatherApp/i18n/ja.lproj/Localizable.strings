@@ -6,13 +6,34 @@
   
 */
 /* Weather Conditions */
-"weather-confition-sunny" = "晴れ";
+"weather-confition-clear" = "快晴";
+"weather-confition-mostly-clear" = "太陽";
+"weather-confition-partly-cloudy" = "雲";
 "weather-confition-cloudy" = "曇り";
-"weather-confition-rainy" = "雨";
-"weather-confition-windy" = "風が強い";
-"weather-confition-snowy" = "雪の";
-"weather-confition-foggy" = "霧深い";
-"weather-confition-stormy" = "嵐のような";
-"weather-confition-hot" = "熱い";
-"weather-confition-cold" = "寒い";
-"weather-confition-humid" = "湿気が多い";
+"weather-confition-fog" = "霧";
+"weather-confition-freezing-fog" = "濃霧";
+"weather-confition-light-drizzle" = "小雨";
+"weather-confition-drizzle" = "小雨";
+"weather-confition-heavy-drizzle" = "小雨";
+"weather-confition-light-freezing-drizzle" = "小雨";
+"weather-confition-freezing-drizzle" = "小雨";
+"weather-confition-light-rain" = "小雨";
+"weather-confition-rain" = "雨";
+"weather-confition-heavy-rain" = "大雨";
+"weather-confition-light-freezing-rain" = "小雨";
+"weather-confition-freezing-rain" = "雨";
+"weather-confition-light-snow" = "雪";
+"weather-confition-snow" = "雪";
+"weather-confition-heavy-snow" = "大雪";
+
+"weather-confition-snow-grains" = "雪";
+
+"weather-confition-light-rain-shower" = "俄雨";
+"weather-confition-rain-shower" = "俄雨";
+"weather-confition-heavy-rain-shower" = "俄雨";
+"weather-confition-show-shower" = "雪";
+"weather-confition-heavy-snow-shower" = "雪";
+"weather-confition-thunderstorm" = "雷雨";
+"weather-confition-hailstorm" = "霰";
+"weather-confition-heavy-hailstorm" = "霰";
+"weather-condition-default" = "-";

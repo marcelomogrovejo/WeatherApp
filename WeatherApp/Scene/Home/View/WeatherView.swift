@@ -20,6 +20,7 @@ struct WeatherView: View {
                         .fontWeight(.bold)
                         .foregroundStyle(Color.Text.mainColor)
 
+                    // TODO: Localize !
                     Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
                         .fontWeight(.light)
                         .foregroundStyle(Color.Text.mainColor)
@@ -31,7 +32,7 @@ struct WeatherView: View {
                 VStack {
                     HStack {
                         VStack(alignment: .center) {
-                            Image(systemName: weather.iconName ?? "questionmark")
+                            Image(systemName: weather.iconName ?? "cloud.rainbow.half")
                                 .resizable()
                                 .scaledToFit()
                                 .padding()
@@ -39,24 +40,30 @@ struct WeatherView: View {
                                 .frame(width: 100, height: 100)
                                 .foregroundStyle(Color.Text.mainColor)
 
-                            Text(weather.weather)
+                            Text(weather.weatherCondition)
                                 .foregroundStyle(Color.Text.mainColor)
                                 .fontWeight(.bold)
                         }
 
                         Spacer()
 
-                        Text(weather.feelLikeTemp.roundDouble() + "°")
-                            .font(.system(size: 100))
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color.Text.mainColor)
-                            .padding()
+                        HStack(alignment: .lastTextBaseline, spacing: 0) {
+                            Text(weather.feelLikeTemp.roundDouble())
+                                .font(.system(size: 90))
+                                .fontWeight(.bold)
+                                .foregroundStyle(Color.Text.mainColor)
+
+                            Text(weather.feelLikeUnit)
+                                .font(.system(size: 30))
+                                .foregroundStyle(Color.Text.mainColor)
+                        }
+                        .padding()
                     }
                     .padding(.vertical)
 
                     WeatherHourlyView(hourlyWeathers: weather.hourly)
-                        .frame(width: 350, height: 90)
-                        .padding(.vertical)
+                        .frame(height: 140)
+                        .cornerRadius(20, corners: [.allCorners])
 
                     Spacer()
                 }
@@ -69,6 +76,7 @@ struct WeatherView: View {
                 Spacer()
 
                 VStack(alignment: .leading, spacing: 20) {
+                    // TODO: Localize !
                     Text("Weather now")
                         .font(.system(size: 24))
                         .fontWeight(.bold)
@@ -76,27 +84,35 @@ struct WeatherView: View {
                         .padding(.vertical, 3)
 
                     HStack {
+                        // TODO: Localize !
                         WeatherRow(iconName: "thermometer",
                                    name: "Min temp",
-                                   value: weather.minTemperature.roundDouble() + "°")
+                                   value: weather.minTemperature,
+                                   unit: weather.minTemperatureUnit)
 
                         Spacer()
 
+                        // TODO: Localize !
                         WeatherRow(iconName: "thermometer",
                                    name: "Max temp",
-                                   value: weather.maxTemperature.roundDouble() + "°")
+                                   value: weather.maxTemperature,
+                                   unit: weather.maxTemperatureUnit)
                     }
 
                     HStack {
+                        // TODO: Localize !
                         WeatherRow(iconName: "wind",
                                    name: "Wind speed",
-                                   value: weather.windSpeed.roundDouble() + "m/s")
+                                   value: weather.windSpeed,
+                                   unit: weather.windSpeedUnit)
 
                         Spacer()
 
+                        // TODO: Localize !
                         WeatherRow(iconName: "humidity",
                                    name: "Humidity",
-                                   value: "\(weather.humidity)" + "%")
+                                   value: Double(weather.humidity),
+                                   unit: weather.humidityUnit)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -116,18 +132,24 @@ struct WeatherView: View {
     for i in 0...23 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00", 
-                                                 weatherIcon: "",
-                                                 temperature: Double.random(in: -4...33)))
+                                                 weatherIcon: "cloud.rainbow.half",
+                                                 temperature: Double.random(in: -4...33),
+                                                 temperatureUnit: "°C"))
     }
     let dummyWeather = Weather(city: "Nedlands",
                                iconName: "cloud.rainbow.half",
                                feelLikeTemp: 24.9,
+                               feelLikeUnit: "°C",
                                humidity: 5,
+                               humidityUnit: "%",
                                windSpeed: 4.5,
+                               windSpeedUnit: "km/h",
                                hourly: dummyHourlyWeathers,
-                               weather: "Clear",
+                               weatherCondition: "Clear",
                                minTemperature: 11.2,
+                               minTemperatureUnit: "°C",
                                maxTemperature: 22.3,
+                               maxTemperatureUnit: "°C",
                                sunrise: "",
                                sunset: "")
     return WeatherView(weather: dummyWeather)

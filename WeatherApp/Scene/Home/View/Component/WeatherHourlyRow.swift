@@ -9,9 +9,13 @@ import SwiftUI
 
 struct WeatherHourlyRow: View {
 
+    @State private var fontSize: CGFloat = 14
+    @State private var fontColor: Color = Color.Text.mainColor
+
     var hour: String
     var iconName: String
     var temperature: Double
+    var temperatureUnit: String
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -26,15 +30,20 @@ struct WeatherHourlyRow: View {
                 .frame(width: 40, height: 40)
                 .foregroundStyle(Color.Text.mainColor)
 
-            Text(temperature.roundDouble())
+            TemperatureView(fontSize: $fontSize, 
+                            fontColor: $fontColor,
+                            temperature: temperature,
+                            unit: temperatureUnit)
                 .padding(.top, 8)
-                .foregroundStyle(Color.Text.mainColor)
         }
-        .padding(8)
+        .padding(20)
     }
 }
 
 #Preview {
-    WeatherHourlyRow(hour: "Now", iconName: "rainbow", temperature: 23.4)
-        .background(.red)
+    WeatherHourlyRow(hour: "Now",
+                     iconName: "cloud.rainbow.half",
+                     temperature: 23.4,
+                     temperatureUnit: "°C")
+    .background(Color.Background.defaultColor)
 }

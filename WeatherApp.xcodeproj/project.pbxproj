@@ -11,12 +11,13 @@
 		BD1168432C907C15005C7B62 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1168422C907C15005C7B62 /* ImageView.swift */; };
 		BD1AD64D2C95CB5000EF95B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD1AD64B2C95CB5000EF95B9 /* Localizable.strings */; };
 		BD39A4182C974AB1007F2F53 /* WeatherRepoPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BD39A4172C974AB1007F2F53 /* WeatherRepoPackage */; };
+		BD39A4192C985388007F2F53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD1AD64B2C95CB5000EF95B9 /* Localizable.strings */; };
+		BD39A41B2C9872E4007F2F53 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD39A41A2C9872E4007F2F53 /* TemperatureView.swift */; };
 		BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */; };
 		BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54612C8373540098AADD /* WeatherEnum.swift */; };
 		BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54632C8376790098AADD /* Color+Palette.swift */; };
 		BDB584A82C966DB3002BF989 /* WeatherHourlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584A72C966DB3002BF989 /* WeatherHourlyView.swift */; };
 		BDB584AA2C966E15002BF989 /* WeatherHourlyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */; };
-		BDB584AD2C9742D7002BF989 /* WeatherLocalizedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */; };
 		BDCB3CCF2C83063D005C8E92 /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CCE2C83063D005C8E92 /* WeatherApp.swift */; };
 		BDCB3CD12C83063D005C8E92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CD02C83063D005C8E92 /* ContentView.swift */; };
 		BDCB3CD32C830640005C8E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB3CD22C830640005C8E92 /* Assets.xcassets */; };
@@ -77,12 +78,12 @@
 		BD1AD64C2C95CB5000EF95B9 /* en-AU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-AU"; path = "i18n/en-AU.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BD1AD64E2C95CB5E00EF95B9 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "i18n/es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BD1AD64F2C95CB6900EF95B9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = i18n/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD39A41A2C9872E4007F2F53 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 		BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConfig.swift; sourceTree = "<group>"; };
 		BD7C54612C8373540098AADD /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 		BD7C54632C8376790098AADD /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
 		BDB584A72C966DB3002BF989 /* WeatherHourlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyView.swift; sourceTree = "<group>"; };
 		BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyRow.swift; sourceTree = "<group>"; };
-		BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocalizedType.swift; sourceTree = "<group>"; };
 		BDCB3CCB2C83063D005C8E92 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCB3CCE2C83063D005C8E92 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		BDCB3CD02C83063D005C8E92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,14 +163,6 @@
 				BD1AD64B2C95CB5000EF95B9 /* Localizable.strings */,
 			);
 			name = i18n;
-			sourceTree = "<group>";
-		};
-		BDB584AB2C9742BD002BF989 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */,
-			);
-			path = Enum;
 			sourceTree = "<group>";
 		};
 		BDCB3CC22C83063D005C8E92 = {
@@ -289,7 +282,6 @@
 		BDD96BD22C8C76D70098F412 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BDB584AB2C9742BD002BF989 /* Enum */,
 				BDD96BE92C8C84A10098F412 /* Model */,
 				BDD96BD42C8C76E70098F412 /* ViewModel */,
 				BDD96BD32C8C76DF0098F412 /* View */,
@@ -360,6 +352,7 @@
 			children = (
 				BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */,
 				BDD96BF82C8CA7490098F412 /* WeatherRow.swift */,
+				BD39A41A2C9872E4007F2F53 /* TemperatureView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -469,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD39A4192C985388007F2F53 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,12 +478,12 @@
 				BDD96BD82C8C77140098F412 /* HomeView.swift in Sources */,
 				BD1168432C907C15005C7B62 /* ImageView.swift in Sources */,
 				BDD96BFB2C8D34390098F412 /* WeatherViewModel.swift in Sources */,
+				BD39A41B2C9872E4007F2F53 /* TemperatureView.swift in Sources */,
 				BDD96BFD2C8D35CA0098F412 /* Weather.swift in Sources */,
 				BDD96BF62C8CA5D20098F412 /* RoundedCorner.swift in Sources */,
 				BDD96BFF2C8D3A9A0098F412 /* Double+Rounded.swift in Sources */,
 				BDD96BDB2C8C77310098F412 /* LocationViewModel.swift in Sources */,
 				BDB584AA2C966E15002BF989 /* WeatherHourlyRow.swift in Sources */,
-				BDB584AD2C9742D7002BF989 /* WeatherLocalizedType.swift in Sources */,
 				BDD96BF42C8CA4890098F412 /* View+Shapes.swift in Sources */,
 				BDCB3CCF2C83063D005C8E92 /* WeatherApp.swift in Sources */,
 				BDD96BF92C8CA7490098F412 /* WeatherRow.swift in Sources */,
