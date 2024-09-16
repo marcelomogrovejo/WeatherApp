@@ -20,18 +20,26 @@ class WeatherViewModel {
 
     func getWeather(latitude: Double, longitude: Double) async throws {
         do {
-            let domainWeather = try await self.apiService.getCurrentWeather(latitude: latitude, longitude: longitude)
-            // TODO: Warning !! Change for generic weather images cz it is imposible to have an image from every city world wide
-            let imageUrl = "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/499000/499351-western-australia.jpg"
-            weather = Weather(city: domainWeather.cityName,
-                              weather: domainWeather.weather,
-                              icon: domainWeather.iconName,
+//            let domainWeather = try await self.apiService.getCurrentWeather(latitude: latitude, longitude: longitude)
+            let domainWeather = try await self.apiService.getCurrentWeatherV2(latitude: latitude, longitude: longitude)
+            let combinedHourlyWeathers = domainWeather.hourlyWeatherTime.enumerated().map { (index, time) in
+                HourlyWeather(time: time, 
+                              // TODO: get the weather from the code
+                              weather: "\(domainWeather.hourlyWeatherCode[index])",
+                              temperature: domainWeather.hourlyWeatherTemperature[index])
+            }
+            weather = Weather(city: "Dummy city", // TODO Now comes from the location manager ??
+                              iconName: Weather.getIconName(domainWeather.weatherCode, isDay: domainWeather.isDay),
                               feelLikeTemp: domainWeather.feelLike,
-                              imageUrl: imageUrl,
+                              humidity: domainWeather.humidity,
+                              windSpeed: domainWeather.windSpeed,
+                              hourly: combinedHourlyWeathers,
+                              // TODO: get the weather from the code
+                              weather: "Dummy weather",
                               minTemperature: domainWeather.minTemperature,
                               maxTemperature: domainWeather.maxTemperature,
-                              windSpeed: domainWeather.windSpeed,
-                              humidity: domainWeather.humidity)
+                              sunrise: domainWeather.sunrise,
+                              sunset: domainWeather.sunset)
         } catch {
             print("Error: \(error.localizedDescription)")
             

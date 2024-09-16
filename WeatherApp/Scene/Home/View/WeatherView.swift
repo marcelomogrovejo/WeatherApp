@@ -31,7 +31,7 @@ struct WeatherView: View {
                 VStack {
                     HStack {
                         VStack(alignment: .center) {
-                            Image(systemName: weather.icon ?? "questionmark")
+                            Image(systemName: weather.iconName ?? "questionmark")
                                 .resizable()
                                 .scaledToFit()
                                 .padding()
@@ -54,9 +54,9 @@ struct WeatherView: View {
                     }
                     .padding(.vertical)
 
-                    ImageView(imageUrl: weather.imageUrl)
-                        .frame(width: 350)
-                        .cornerRadius(20, corners: .allCorners)
+                    WeatherHourlyView(hourlyWeathers: weather.hourly)
+                        .frame(width: .infinity, height: 90)
+                        .padding(.vertical)
 
                     Spacer()
                 }
@@ -112,14 +112,23 @@ struct WeatherView: View {
 }
 
 #Preview {
-    let fakeWeather = Weather(city: "Nedlands",
-                              weather: "Clear",
-                              icon: "cloud.rainbow.half",
-                              feelLikeTemp: 24.9,
-                              imageUrl: "https://www.nicheliving.com.au/wp-content/uploads/2021/11/nedlands-blog-hero-img.jpg",
-                              minTemperature: 11.2,
-                              maxTemperature: 22.3,
-                              windSpeed: 4.5,
-                              humidity: 5)
-    return WeatherView(weather: fakeWeather)
+    var dummyHourlyWeathers: [HourlyWeather] = []
+    for i in 0...23 {
+        let number = String(format: "%02d", i)
+        dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00", 
+                                                 weather: "",
+                                                 temperature: Double.random(in: -4...33)))
+    }
+    let dummyWeather = Weather(city: "Nedlands",
+                               iconName: "cloud.rainbow.half",
+                               feelLikeTemp: 24.9,
+                               humidity: 5,
+                               windSpeed: 4.5,
+                               hourly: dummyHourlyWeathers,
+                               weather: "Clear",
+                               minTemperature: 11.2,
+                               maxTemperature: 22.3,
+                               sunrise: "",
+                               sunset: "")
+    return WeatherView(weather: dummyWeather)
 }

@@ -10,9 +10,13 @@
 		BD0D204B2C956F5700F2BA7F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD96BFC2C8D35CA0098F412 /* Weather.swift */; };
 		BD1168432C907C15005C7B62 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1168422C907C15005C7B62 /* ImageView.swift */; };
 		BD1AD64D2C95CB5000EF95B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD1AD64B2C95CB5000EF95B9 /* Localizable.strings */; };
+		BD39A4182C974AB1007F2F53 /* WeatherRepoPackage in Frameworks */ = {isa = PBXBuildFile; productRef = BD39A4172C974AB1007F2F53 /* WeatherRepoPackage */; };
 		BD7C54602C836F8B0098AADD /* WeatherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */; };
 		BD7C54622C8373540098AADD /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54612C8373540098AADD /* WeatherEnum.swift */; };
 		BD7C54642C8376790098AADD /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7C54632C8376790098AADD /* Color+Palette.swift */; };
+		BDB584A82C966DB3002BF989 /* WeatherHourlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584A72C966DB3002BF989 /* WeatherHourlyView.swift */; };
+		BDB584AA2C966E15002BF989 /* WeatherHourlyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */; };
+		BDB584AD2C9742D7002BF989 /* WeatherLocalizedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */; };
 		BDCB3CCF2C83063D005C8E92 /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CCE2C83063D005C8E92 /* WeatherApp.swift */; };
 		BDCB3CD12C83063D005C8E92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCB3CD02C83063D005C8E92 /* ContentView.swift */; };
 		BDCB3CD32C830640005C8E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCB3CD22C830640005C8E92 /* Assets.xcassets */; };
@@ -76,6 +80,9 @@
 		BD7C545F2C836F8B0098AADD /* WeatherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConfig.swift; sourceTree = "<group>"; };
 		BD7C54612C8373540098AADD /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 		BD7C54632C8376790098AADD /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
+		BDB584A72C966DB3002BF989 /* WeatherHourlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyView.swift; sourceTree = "<group>"; };
+		BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHourlyRow.swift; sourceTree = "<group>"; };
+		BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocalizedType.swift; sourceTree = "<group>"; };
 		BDCB3CCB2C83063D005C8E92 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCB3CCE2C83063D005C8E92 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		BDCB3CD02C83063D005C8E92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +133,7 @@
 			files = (
 				BDCB3CE52C83065C005C8E92 /* SwiftUI.framework in Frameworks */,
 				BDCB3CE32C83065C005C8E92 /* WidgetKit.framework in Frameworks */,
+				BD39A4182C974AB1007F2F53 /* WeatherRepoPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +162,14 @@
 				BD1AD64B2C95CB5000EF95B9 /* Localizable.strings */,
 			);
 			name = i18n;
+			sourceTree = "<group>";
+		};
+		BDB584AB2C9742BD002BF989 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				BDB584AC2C9742D7002BF989 /* WeatherLocalizedType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		BDCB3CC22C83063D005C8E92 = {
@@ -273,6 +289,7 @@
 		BDD96BD22C8C76D70098F412 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BDB584AB2C9742BD002BF989 /* Enum */,
 				BDD96BE92C8C84A10098F412 /* Model */,
 				BDD96BD42C8C76E70098F412 /* ViewModel */,
 				BDD96BD32C8C76DF0098F412 /* View */,
@@ -286,6 +303,8 @@
 				BDD96BF72C8CA73D0098F412 /* Component */,
 				BDD96BD72C8C77140098F412 /* HomeView.swift */,
 				BDD96BF12C8C9F4B0098F412 /* WeatherView.swift */,
+				BDB584A72C966DB3002BF989 /* WeatherHourlyView.swift */,
+				BDB584A92C966E15002BF989 /* WeatherHourlyRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -383,6 +402,9 @@
 			dependencies = (
 			);
 			name = WeatherAppWidgetExtension;
+			packageProductDependencies = (
+				BD39A4172C974AB1007F2F53 /* WeatherRepoPackage */,
+			);
 			productName = WeatherAppWidgetExtension;
 			productReference = BDCB3CE02C83065C005C8E92 /* WeatherAppWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -466,9 +488,12 @@
 				BDD96BF62C8CA5D20098F412 /* RoundedCorner.swift in Sources */,
 				BDD96BFF2C8D3A9A0098F412 /* Double+Rounded.swift in Sources */,
 				BDD96BDB2C8C77310098F412 /* LocationViewModel.swift in Sources */,
+				BDB584AA2C966E15002BF989 /* WeatherHourlyRow.swift in Sources */,
+				BDB584AD2C9742D7002BF989 /* WeatherLocalizedType.swift in Sources */,
 				BDD96BF42C8CA4890098F412 /* View+Shapes.swift in Sources */,
 				BDCB3CCF2C83063D005C8E92 /* WeatherApp.swift in Sources */,
 				BDD96BF92C8CA7490098F412 /* WeatherRow.swift in Sources */,
+				BDB584A82C966DB3002BF989 /* WeatherHourlyView.swift in Sources */,
 				BDD96BE02C8C7DC70098F412 /* WelcomeView.swift in Sources */,
 				BDD96C082C8F63350098F412 /* MainButton.swift in Sources */,
 				BDD96BE32C8C7E8C0098F412 /* Color+Palette.swift in Sources */,
@@ -799,6 +824,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BD39A4172C974AB1007F2F53 /* WeatherRepoPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDD96C022C8D5F200098F412 /* XCRemoteSwiftPackageReference "weatherrepopackage" */;
+			productName = WeatherRepoPackage;
+		};
 		BDD96C032C8D5F5D0098F412 /* WeatherRepoPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BDD96C022C8D5F200098F412 /* XCRemoteSwiftPackageReference "weatherrepopackage" */;

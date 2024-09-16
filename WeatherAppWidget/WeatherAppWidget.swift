@@ -45,15 +45,17 @@ struct WeatherTimelineProvider: TimelineProvider {
 
     // providing dummy data to the system to render a placeholder UI while waiting for the widget to get ready
     func placeholder(in context: Context) -> WeatherEntry {
-        let dummyWeather = Weather(city: "Dummy City",
-                                   weather: "Clear",
-                                   icon: "sun.max.fill",
+        let dummyWeather = Weather(city: "Placeholder City",
+                                   iconName: "sun.max.fill",
                                    feelLikeTemp: 19.4,
-                                   imageUrl: "",
+                                   humidity: 20,
+                                   windSpeed: 6.2,
+                                   hourly: [],
+                                   weather: "Clear",
                                    minTemperature: 18.0,
                                    maxTemperature: 22.2,
-                                   windSpeed: 6.2,
-                                   humidity: 20)
+                                   sunrise: "",
+                                   sunset: "")
 //        Weather(condition: .cloudy, location: "Adelaide", degrees: 18)
         return WeatherEntry(date: .now, currentWeather: dummyWeather)
     }
@@ -61,14 +63,16 @@ struct WeatherTimelineProvider: TimelineProvider {
     // provides the data required by the system to render the widget in the widget gallery
     func getSnapshot(in context: Context, completion: @escaping (WeatherEntry) -> Void) {
         let dummyWeather = Weather(city: "Snapshot City",
-                                   weather: "Rainy",
-                                   icon: "cloud.rain",
+                                   iconName: "cloud.rain",
                                    feelLikeTemp: 17.6,
-                                   imageUrl: "",
+                                   humidity: 15,
+                                   windSpeed: 2.8,
+                                   hourly: [],
+                                   weather: "Rainy",
                                    minTemperature: 14.0,
                                    maxTemperature: 20.0,
-                                   windSpeed: 2.8,
-                                   humidity: 15)
+                                   sunrise: "",
+                                   sunset: "")
 //        Weather(condition: .sunny, location: "Perth", degrees: 25)
         let snapshotEntry = WeatherEntry(date: .now, currentWeather: dummyWeather)
         completion(snapshotEntry)
@@ -87,14 +91,16 @@ struct WeatherTimelineProvider: TimelineProvider {
             // TODO: WARNING !
             // Figure out how to get the Weather from the main app
             let temp = Weather(city: "Snapshot City",
-                                weather: "Rainy",
-                                icon: "cloud.rain",
-                                feelLikeTemp: 17.6,
-                                imageUrl: "",
-                                minTemperature: 14.0,
-                                maxTemperature: 20.0,
-                                windSpeed: 2.8,
-                                humidity: 15)
+                               iconName: "cloud.rain",
+                               feelLikeTemp: 17.6,
+                               humidity: 15,
+                               windSpeed: 2.8,
+                               hourly: [],
+                               weather: "Rainy",
+                               minTemperature: 14.0,
+                               maxTemperature: 20.0,
+                               sunrise: "",
+                               sunset: "")
             let entry = WeatherEntry(date: .now, currentWeather: temp)
             entries.append(entry)
         }
@@ -128,18 +134,16 @@ struct WeatherAppWidget: Widget {
     WeatherAppWidget()
 } timeline: {
     WeatherEntry(date: .now,
-                 currentWeather: 
-//                    Weather(condition: .windy,
-//                                         location: "Hong Kong",
-//                                         degrees: 7)
-                                    Weather(city: "Snapshot City",
-                                            weather: "Rainy",
-                                            icon: "cloud.rain",
-                                            feelLikeTemp: 17.6,
-                                            imageUrl: "",
-                                            minTemperature: 14.0,
-                                            maxTemperature: 20.0,
-                                            windSpeed: 2.8,
-                                            humidity: 15)
+                 currentWeather: Weather(city: "Snapshot City",
+                                         iconName: "cloud.rain",
+                                         feelLikeTemp: 17.6,
+                                         humidity: 15,
+                                         windSpeed: 2.8,
+                                         hourly: [],
+                                         weather: "Rainy",
+                                         minTemperature: 14.0,
+                                         maxTemperature: 20.0,
+                                         sunrise: "",
+                                         sunset: "")
     )
 }

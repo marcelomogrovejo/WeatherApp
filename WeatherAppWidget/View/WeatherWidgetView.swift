@@ -23,7 +23,7 @@ struct WeatherWidgetView: View {
         VStack(alignment: .center) {
             HStack(spacing: 4) {
 //                Text(config.emojiText)
-                Text(entry.currentWeather.icon ?? "rainbow")
+                Text(entry.currentWeather.iconName ?? "rainbow")
                     .font(.title)
 //                Text("\(entry.currentWeather.condition.description)")
                 Text(entry.currentWeather.weather)
@@ -58,14 +58,16 @@ struct WeatherWidgetView: View {
 
 #Preview() {
     let previewWeather = Weather(city: "Preview City",
-                                 weather: "Rainbow",
-                                 icon: "rainbow",
+                                 iconName: "rainbow",
                                  feelLikeTemp: 32.0,
-                                 imageUrl: "",
+                                 humidity: 10,
+                                 windSpeed: 8.5,
+                                 hourly: [],
+                                 weather: "Rainbow",
                                  minTemperature: 21.6,
                                  maxTemperature: 39.9,
-                                 windSpeed: 8.5,
-                                 humidity: 10)
+                                 sunrise: "",
+                                 sunset: "")
     let previewWeatherEntry = WeatherEntry(date: .now, currentWeather: previewWeather)
     return VStack {
         WeatherWidgetView(entry: previewWeatherEntry)
