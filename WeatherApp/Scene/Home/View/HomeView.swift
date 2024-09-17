@@ -14,12 +14,13 @@ struct HomeView: View {
 
     // TODO: try locationViewMdel.coordinates ?
     @State var coordinate: Coordinate?
+    @State var locationData: LocationData?
 
     var body: some View {
         VStack {
             if let coordinate = coordinate {
                 if let weather = weatherViewModel.weather {
-                    WeatherView(weather: weather)
+                    WeatherView(weather: weather, locationData: locationData)
                 } else {
                     LoadingView(message: "Getting weather...")
                         .task {
@@ -40,7 +41,8 @@ struct HomeView: View {
         .background(Color.Background.defaultColor)
         .task {
             do {
-                self.coordinate = try await locationViewModel.coordinate
+                self.coordinate = try await self.locationViewModel.coordinate
+                self.locationData = try await self.locationViewModel.locationData
             } catch {
                 print("V Error getting location \(error.localizedDescription)")
 

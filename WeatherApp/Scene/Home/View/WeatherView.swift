@@ -10,12 +10,13 @@ import SwiftUI
 struct WeatherView: View {
 
     var weather: Weather
+    var locationData: LocationData?
 
     var body: some View {
         ZStack(alignment: .leading) {
             VStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(weather.city)
+                    Text(locationData?.cityName ?? "Somewhere")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundStyle(Color.Text.mainColor)
@@ -152,5 +153,6 @@ struct WeatherView: View {
                                maxTemperatureUnit: "°C",
                                sunrise: "",
                                sunset: "")
-    return WeatherView(weather: dummyWeather)
+    let dummyLocationData = LocationData(cityName: "Dummy City")
+    return WeatherView(weather: dummyWeather, locationData: dummyLocationData)
 }

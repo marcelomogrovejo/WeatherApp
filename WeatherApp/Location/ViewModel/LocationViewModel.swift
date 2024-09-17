@@ -17,14 +17,23 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let manager: CLLocationManager
     private let apiService: ApiServiceProtocol
     /// source: https://gist.github.com/runys/10a01deb2b7182c674823b2d051ad271
-    private var continuation: CheckedContinuation<Coordinate, Error>?
+    private var coodsContinuation: CheckedContinuation<Coordinate, Error>?
+    private var locContinuation: CheckedContinuation<LocationData, Error>?
 
     var coordinate: Coordinate? {
         get async throws {
             return try await withCheckedThrowingContinuation { continuation in
-                self.continuation = continuation
+                self.coodsContinuation = continuation
                 self.manager.requestLocation()
             }
+        }
+    }
+    var locationData: LocationData? {
+        get async throws {
+            guard let coordinate = try await coordinate else {
+                return nil
+            }
+            return try await getLocationData(coordinates: coordinate)
         }
     }
 
@@ -49,8 +58,8 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         let coordinate = Coordinate(latitude: locations.coordinate.latitude,
                                     longitude: locations.coordinate.longitude)
         print("Coords: \(coordinate.latitude), \(coordinate.longitude)")
-        continuation?.resume(returning: coordinate)
-        continuation = nil
+        coodsContinuation?.resume(returning: coordinate)
+        coodsContinuation = nil
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
@@ -59,8 +68,8 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         // TODO: 
 
 
-        continuation?.resume(throwing: error)
-        continuation = nil
+        coodsContinuation?.resume(throwing: error)
+        coodsContinuation = nil
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -89,6 +98,33 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             manager.requestWhenInUseAuthorization()
         default:
             return
+        }
+    }
+
+    /// Fetches locaation information for the given coordinates.
+    ///
+    /// - Parameter coordinates: the current latitude and longitude
+    /// - Returns: location data like locality, postal code, country
+    ///
+    func getLocationData(coordinates: Coordinate) async throws -> LocationData {
+        do {
+            let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+            let placemarks = try await CLGeocoder().reverseGeocodeLocation(location)
+            if !placemarks.isEmpty {
+                if let placemark = placemarks.first {
+                    return LocationData(cityName: placemark.locality,
+                                        postalCode: placemark.postalCode,
+                                        countryName: placemark.country,
+                                        countryAbreviatedName: placemark.isoCountryCode)
+                } else {
+                    throw LocationError.locationDataNotFound
+                }
+            } else {
+                throw LocationError.locationDataNotFound
+            }
+        } catch {
+            print("Error Location Manager: \(error.localizedDescription)")
+            throw LocationError.errorGettingData
         }
     }
 
