@@ -9,8 +9,6 @@ import Foundation
 import WeatherRepoPackage
 
 struct Weather {
-    // TODO: get it from lat and lon
-    let city: String
     let iconName: String?
     let feelLikeTemp: Double
     let feelLikeUnit: String
@@ -19,7 +17,6 @@ struct Weather {
     let windSpeed: Double
     let windSpeedUnit: String
     let hourly: [HourlyWeather]
-    // TODO: change code by localizable string
     let weatherCondition: String
     let minTemperature: Double
     let minTemperatureUnit: String
@@ -149,7 +146,7 @@ struct HourlyWeather: Identifiable {
     let id = UUID()
     // TODO: convert to Date
     let time: String
-    // TODO: change code by localizable string
+    let weatherCondition: String
     let weatherIcon: String
     let temperature: Double
     let temperatureUnit: String

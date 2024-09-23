@@ -32,6 +32,7 @@ struct WeatherHourlyView: View {
     for i in 1...24 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00",
+                                                 weatherCondition: "Clear",
                                                  weatherIcon: "cloud.rainbow.half",
                                                  temperature: Double.random(in: -4...33),
                                                  temperatureUnit: "°C"))

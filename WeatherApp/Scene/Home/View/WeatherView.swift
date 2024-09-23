@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct WeatherView: View {
 
@@ -16,6 +17,7 @@ struct WeatherView: View {
         ZStack(alignment: .leading) {
             VStack {
                 VStack(alignment: .leading, spacing: 5) {
+                    // TODO: Localize !
                     Text(locationData?.cityName ?? "Somewhere")
                         .font(.title)
                         .fontWeight(.bold)
@@ -125,6 +127,14 @@ struct WeatherView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(Color.Background.defaultColor)
+        .task {
+            if !weather.hourly.isEmpty {
+                print("WEATHER UPDATED !")
+                WidgetCenter.shared.reloadTimelines(ofKind: "WeatherAppWidget")
+            } else {
+                print("WEATHER not updated !")
+            }
+        }
     }
 }
 
@@ -133,12 +143,13 @@ struct WeatherView: View {
     for i in 0...23 {
         let number = String(format: "%02d", i)
         dummyHourlyWeathers.append(HourlyWeather(time: "2024-09-14T\(number):00", 
+                                                 weatherCondition: "Clear",
                                                  weatherIcon: "cloud.rainbow.half",
                                                  temperature: Double.random(in: -4...33),
                                                  temperatureUnit: "°C"))
     }
-    let dummyWeather = Weather(city: "Nedlands",
-                               iconName: "cloud.rainbow.half",
+    // TODO: city is now coming from locationData (LocationViewModel)
+    let dummyWeather = Weather(iconName: "cloud.rainbow.half",
                                feelLikeTemp: 24.9,
                                feelLikeUnit: "°C",
                                humidity: 5,

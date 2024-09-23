@@ -15,113 +15,93 @@ import SwiftUI
 // 1. Entry
 struct WeatherEntry: TimelineEntry {
     var date: Date
-    var currentWeather: Weather
-
-    /// Generates a random Weather entry
-    ///
-    /// At this point that is needed in order to test. When the Weather base app is done, the api call will get the real date.
-    /// 
-    /// - Parameter date: a date
-    /// - Returns: a Weather entry
-    ///
-//    static func randomEntry(date: Date) -> WeatherEntry {
-//        let locations = ["Perth", "Adelaide", "Sydney", "Melbourne", "Hobart", "Cairns", "Darwin", "Camberra", "New Castle", "Mendoza"]
-//        let randomLocation = locations[Int.random(in: 0..<locations.count)]
-//        let randomDegrees = Int.random(in: -30..<44)
-//        guard let randomWeatherCondition = WeatherCondition.randomCondition() else {
-//            let dummyWeather = Weather(condition: .cloudy, location: randomLocation, degrees: randomDegrees)
-//            return WeatherEntry(date: date, currentWeather: dummyWeather)
-//        }
-//        let randomWeather = Weather(condition: randomWeatherCondition,
-//                                    location: randomLocation,
-//                                    degrees: randomDegrees)
-//        return WeatherEntry(date: date, currentWeather: randomWeather)
-//    }
+    var currentLocation: String
+    var currentWeather: HourlyWeather
+    var index: Int
 }
 
 // 3. Timeline Provider
 struct WeatherTimelineProvider: TimelineProvider {
+
     typealias Entry = WeatherEntry
+
+    var locationViewModel: LocationViewModel?
+    var weatherViewModel: WeatherViewModel?
+
+    init(locationViewModel: LocationViewModel = LocationViewModel(),
+         weatherViewModel: WeatherViewModel = WeatherViewModel()) {
+        self.locationViewModel = locationViewModel
+        self.weatherViewModel = weatherViewModel
+    }
 
     // providing dummy data to the system to render a placeholder UI while waiting for the widget to get ready
     func placeholder(in context: Context) -> WeatherEntry {
-        let dummyWeather = Weather(city: "Placeholder City",
-                                   iconName: "sun.max.fill",
-                                   feelLikeTemp: 19.4, 
-                                   feelLikeUnit: "°",
-                                   humidity: 20,
-                                   humidityUnit: "%",
-                                   windSpeed: 6.2,
-                                   windSpeedUnit: "km/h",
-                                   hourly: [],
-                                   weatherCondition: "Clear",
-                                   minTemperature: 18.0,
-                                   minTemperatureUnit: "°",
-                                   maxTemperature: 22.2,
-                                   maxTemperatureUnit: "°",
-                                   sunrise: "",
-                                   sunset: "")
-//        Weather(condition: .cloudy, location: "Adelaide", degrees: 18)
-        return WeatherEntry(date: .now, currentWeather: dummyWeather)
+        let placeholderHourlyWeather = HourlyWeather(time: "\(Date.now)",
+                                                     weatherCondition: "Clear",
+                                                     weatherIcon: "rainbow",
+                                                     temperature: 23.4,
+                                                     temperatureUnit: "°C")
+        return WeatherEntry(date: .now, currentLocation: "Mendoza", currentWeather: placeholderHourlyWeather, index: 0)
     }
 
     // provides the data required by the system to render the widget in the widget gallery
     func getSnapshot(in context: Context, completion: @escaping (WeatherEntry) -> Void) {
-        let dummyWeather = Weather(city: "Snapshot City",
-                                   iconName: "cloud.rain",
-                                   feelLikeTemp: 17.6, 
-                                   feelLikeUnit: "°",
-                                   humidity: 15,
-                                   humidityUnit: "%",
-                                   windSpeed: 2.8,
-                                   windSpeedUnit: "km/h",
-                                   hourly: [],
-                                   weatherCondition: "Rainy",
-                                   minTemperature: 14.0,
-                                   minTemperatureUnit: "°",
-                                   maxTemperature: 20.0,
-                                   maxTemperatureUnit: "°",
-                                   sunrise: "",
-                                   sunset: "")
-//        Weather(condition: .sunny, location: "Perth", degrees: 25)
-        let snapshotEntry = WeatherEntry(date: .now, currentWeather: dummyWeather)
+        let snapshotHourlyWeather = HourlyWeather(time: "\(Date.now)",
+                                                  weatherCondition: "Clear",
+                                                  weatherIcon: "rainbow",
+                                                  temperature: 23.4,
+                                                  temperatureUnit: "°C")
+        let snapshotEntry = WeatherEntry(date: .now, currentLocation: "Hong Kong", currentWeather: snapshotHourlyWeather, index: 0)
         completion(snapshotEntry)
     }
 
-    // provides an array of timeline entries for the current time and, optionally, any future times to update a widget
+    /// Provides an array of timeline entries for the current time and, optionally, any future times to update a widget
+    ///
+    /// info> Have to request permission to CLLocationManager as well in info.plist
+    /// `<key>NSWidgetWantsLocation</key>`
+    /// `<true/>`
+    /// `<key>NSLocationUsageDescription</key>`
+    /// `<string>Put some text here</string>`
+    /// Source: https://forums.developer.apple.com/forums/thread/658686
+    ///
+    /// info> Have to return the value on a completion handler:
+    /// Source: https://augmentedcode.io/2023/03/20/async-await-and-completion-handler-compatibility-in-swift/
+    ///
+    /// - Parameters:
+    ///   - context: timeline provider context
+    ///   - completion: a timeline or weather entries
+    ///
     func getTimeline(in context: Context, completion: @escaping (Timeline<WeatherEntry>) -> Void) {
-        var entries: [WeatherEntry] = []
-        let currentDate: Date = .now
-        for hourOffset in 0..<15 {
-            // !!!
-            // TODO: Warning !!
-            // Change to update by hours instead of minutes
-            let entryDate = Calendar.current.date(byAdding: .second, value: hourOffset, to: currentDate)!
-//            let entry = WeatherEntry.randomEntry(date: entryDate)
-            // TODO: WARNING !
-            // Figure out how to get the Weather from the main app
-            let temp = Weather(city: "Snapshot City",
-                               iconName: "cloud.rain",
-                               feelLikeTemp: 17.6, 
-                               feelLikeUnit: "°",
-                               humidity: 15,
-                               humidityUnit: "%",
-                               windSpeed: 2.8,
-                               windSpeedUnit: "km/h",
-                               hourly: [],
-                               weatherCondition: "Rainy",
-                               minTemperature: 14.0,
-                               minTemperatureUnit: "°",
-                               maxTemperature: 20.0,
-                               maxTemperatureUnit: "°",
-                               sunrise: "",
-                               sunset: "")
-            let entry = WeatherEntry(date: .now, currentWeather: temp)
-            entries.append(entry)
-        }
+        Task {
+            do {
+                var entries: [WeatherEntry] = []
+                let currentDate: Date = .now
+                var index: Int = 0
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+                let coordinte = try await locationViewModel?.coordinate
+                let currentCity = try await locationViewModel?.locationData?.cityName
+
+                guard let hourlyWeathers = try await weatherViewModel?.getHourlyWeatherOnGo(currentTime: currentDate, latitude: coordinte?.latitude, longitude: coordinte?.longitude) else {
+                    // TODO:
+                    return
+                }
+
+                for hourlyWeather in hourlyWeathers {
+                    let entryDate = Calendar.current.date(byAdding: .second, value: index, to: currentDate)!
+                    // TODO: Localize
+                    entries.append(WeatherEntry(date: entryDate, currentLocation: currentCity ?? "Unknown city", currentWeather: hourlyWeather, index: index))
+                    index += 1
+                }
+                let timeline = Timeline(entries: entries, policy: .atEnd)
+                await MainActor.run {
+                    completion(timeline)
+                }
+            } catch {
+                await MainActor.run {
+                    // TODO:
+                }
+            }
+        }
     }
 
 }
@@ -148,22 +128,10 @@ struct WeatherAppWidget: Widget {
 #Preview(as: .systemSmall) {
     WeatherAppWidget()
 } timeline: {
-    WeatherEntry(date: .now,
-                 currentWeather: Weather(city: "Snapshot City",
-                                         iconName: "cloud.rain",
-                                         feelLikeTemp: 17.6, 
-                                         feelLikeUnit: "°",
-                                         humidity: 15,
-                                         humidityUnit: "%",
-                                         windSpeed: 2.8,
-                                         windSpeedUnit: "km/h",
-                                         hourly: [],
-                                         weatherCondition: "Rainy",
-                                         minTemperature: 14.0,
-                                         minTemperatureUnit: "°",
-                                         maxTemperature: 20.0,
-                                         maxTemperatureUnit: "°",
-                                         sunrise: "",
-                                         sunset: "")
-    )
+    let dummyHourlyWeather = HourlyWeather(time: "\(Date.now)",
+                                           weatherCondition: "Clear",
+                                           weatherIcon: "rainbow",
+                                           temperature: 23.4,
+                                           temperatureUnit: "°C")
+    WeatherEntry(date: .now, currentLocation: "Perth", currentWeather: dummyHourlyWeather, index: 0)
 }

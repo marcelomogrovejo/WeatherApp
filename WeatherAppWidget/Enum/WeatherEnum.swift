@@ -5,6 +5,9 @@
 //  Created by Marcelo Mogrovejo on 31/08/2024.
 //
 
+
+// TODO: DEPRECATE ?!?
+
 import Foundation
 
 enum DegreesType: String {

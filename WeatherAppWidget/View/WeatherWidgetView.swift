@@ -14,40 +14,45 @@ struct WeatherWidgetView: View {
     var entry: WeatherEntry
 //    var config: WeatherConfig
 
-    init(entry: WeatherEntry) {
-        self.entry = entry
+//    init(entry: WeatherEntry) {
+//        self.entry = entry
 //        self.config = WeatherConfig.determineConfig(from: entry.currentWeather.condition)
-    }
+//    }
 
     var body: some View {
-        VStack(alignment: .center) {
-            HStack(spacing: 4) {
-//                Text(config.emojiText)
-                Text(entry.currentWeather.iconName ?? "rainbow")
-                    .font(.title)
-//                Text("\(entry.currentWeather.condition.description)")
-                Text(entry.currentWeather.weatherCondition)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .minimumScaleFactor(0.6)
-//                    .foregroundColor(config.conditionTextColor)
+        VStack(alignment: .center, spacing: 0) {
+            HStack(spacing: 3) {
+
+                // TODO: Temp... to see the 23 entries update ref
+                Text("\(entry.index)")
+
+                Text(entry.currentLocation)
+                    .font(.caption)
+
+                Image(systemName: "location")
+//                    .resizable()
+//                    .scaledToFit()
             }
 
             HStack(alignment: .lastTextBaseline, spacing: 2) {
-//                Text("\(entry.currentWeather.degrees)")
-                Text("\(entry.currentWeather.feelLikeTemp)")
-                    .font(.system(size: 50, weight: .heavy))
-//                    .foregroundColor(config.conditionTextColor)
-//                Text("\(entry.currentWeather.degreesType?.rawValue ?? "°C")")
-//                    .font(.system(size: 20, weight: .bold))
-//                    .foregroundColor(config.conditionTextColor)
+                Text("\(entry.currentWeather.temperature)")
+                    .font(.system(size: 18, weight: .heavy))
+
+                Text(entry.currentWeather.temperatureUnit)
+                    .font(.system(size: 14, weight: .bold))
             }
 
-//            Text(entry.currentWeather.location)
-            Text(entry.currentWeather.city)
+            Image(systemName: entry.currentWeather.weatherIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+//                    .foregroundStyle(Color.Text.mainColor)
+
+            Text(entry.currentWeather.weatherCondition)
                 .font(.footnote)
                 .fontWeight(.bold)
-//                .foregroundColor(config.conditionTextColor)
+                .minimumScaleFactor(0.6)
+//                    .foregroundColor(config.conditionTextColor)
         }
         /// Source: https://swiftsenpai.com/development/widget-container-background/
         .containerBackground(for: .widget) {
@@ -57,23 +62,15 @@ struct WeatherWidgetView: View {
 }
 
 #Preview() {
-    let previewWeather = Weather(city: "Preview City",
-                                 iconName: "rainbow",
-                                 feelLikeTemp: 32.0, 
-                                 feelLikeUnit: "°",
-                                 humidity: 10,
-                                 humidityUnit: "%",
-                                 windSpeed: 8.5,
-                                 windSpeedUnit: "km/h",
-                                 hourly: [],
-                                 weatherCondition: "Rainbow",
-                                 minTemperature: 21.6,
-                                 minTemperatureUnit: "°",
-                                 maxTemperature: 39.9,
-                                 maxTemperatureUnit: "°",
-                                 sunrise: "",
-                                 sunset: "")
-    let previewWeatherEntry = WeatherEntry(date: .now, currentWeather: previewWeather)
+    let previewHourlyWeather = HourlyWeather(time: "\(Date.now)",
+                                             weatherCondition: "Clear",
+                                             weatherIcon: "rainbow",
+                                             temperature: 23.4,
+                                             temperatureUnit: "°C")
+    let previewWeatherEntry = WeatherEntry(date: .now,
+                                           currentLocation: "Thailand",
+                                           currentWeather: previewHourlyWeather,
+                                           index: 0)
     return VStack {
         WeatherWidgetView(entry: previewWeatherEntry)
 //        WeatherWidgetView(entry: WeatherEntry.randomEntry(date: .now))
